@@ -46,14 +46,14 @@ let since_8_14 = Deprecation.make ~since:"8.14" ()
 let { Goptions.get = lra_proof_depth } =
   declare_int_option_and_ref
     ~depr:since_8_14
-    ~key:["Lra"; "Depth"]
+    ~key:["Micromega"; "Lra"; "Depth"]
     ~value:max_depth
     ()
 
 let { Goptions.get = lia_proof_depth } =
   declare_int_option_and_ref
     ~depr:since_8_14
-    ~key:["Lia"; "Depth"]
+    ~key:["Micromega"; "Lia"; "Depth"]
     ~value:max_depth
     ()
 
@@ -63,25 +63,25 @@ let get_lia_option () = lia_proof_depth ()
 
 let { Goptions.get = use_lia_cache } =
   declare_bool_option_and_ref
-    ~key:["Lia"; "Cache"]
+    ~key:["Micromega"; "Lia"; "Cache"]
     ~value:true
     ()
 
 let { Goptions.get = use_nia_cache } =
   declare_bool_option_and_ref
-    ~key:["Nia"; "Cache"]
+    ~key:["Micromega"; "Nia"; "Cache"]
     ~value:true
     ()
 
 let { Goptions.get = use_nra_cache } =
   declare_bool_option_and_ref
-    ~key:["Nra"; "Cache"]
+    ~key:["Micromega"; "Nra"; "Cache"]
     ~value:true
     ()
 
 let { Goptions.get = show_used_hyps } =
   declare_bool_option_and_ref
-    ~key:["Info";"Micromega"]
+    ~key:["Micromega"; "Info"]
     ~value:false
     ()
 

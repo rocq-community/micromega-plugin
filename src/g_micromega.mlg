@@ -12,7 +12,7 @@
 (*                                                                      *)
 (* * Mappings from Rocq tactics to Caml function calls                  *)
 (*                                                                      *)
-(*  Frédéric Besson (Irisa/Inria) 2006-2008			                    *)
+(*  Frédéric Besson (Irisa/Inria) 2006-2008			        *)
 (*                                                                      *)
 (************************************************************************)
 
@@ -24,7 +24,7 @@ open Tacarg
 
 }
 
-DECLARE PLUGIN "rocq-runtime.plugins.micromega"
+DECLARE PLUGIN "micromega-plugin.plugin"
 
 TACTIC EXTEND Lra_Q
 | [ "xlra_Q"  tactic(t) ] -> { Coq_micromega.xlra_Q (Tacinterp.tactic_of_value ist t) }

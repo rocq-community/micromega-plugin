@@ -31,7 +31,7 @@ open Mutils
 
 let { Goptions.get = dump_file } =
   Goptions.declare_stringopt_option_and_ref
-    ~key:["Dump"; "Arith"]
+    ~key:["Micromega"; "Dump"; "Arith"]
     ~value:None
     ()
 
