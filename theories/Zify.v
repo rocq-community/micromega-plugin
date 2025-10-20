@@ -1,0 +1,17 @@
+(************************************************************************)
+(*         *      The Rocq Prover / The Rocq Development Team           *)
+(*  v      *         Copyright INRIA, CNRS and contributors             *)
+(* <O___,, * (https://github.com/rocq-prover/stdlib for authors & dates)*)
+(*   \VV/  **************************************************************)
+(*    //   *    This file is distributed under the terms of the         *)
+(*         *     GNU Lesser General Public License Version 2.1          *)
+(*         *     (see LICENSE file for the text of the license)         *)
+(************************************************************************)
+(*                                                                      *)
+(* Micromega: A reflexive tactic using the Positivstellensatz           *)
+(*                                                                      *)
+(*  Frédéric Besson (Irisa/Inria)                                       *)
+(*                                                                      *)
+(************************************************************************)
+
+Declare ML Module "micromega-plugin.zify".
