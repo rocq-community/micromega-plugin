@@ -12,6 +12,10 @@ install:
 	$(call dune,install) micromega-plugin
 .PHONY: install
 
+test: build install
+	$(MAKE) -C test-suite
+.PHONY: test
+
 nix:
 	nix-shell --arg do-nothing true --run "updateNixToolBox && genNixActions"
 .PHONY: nix
