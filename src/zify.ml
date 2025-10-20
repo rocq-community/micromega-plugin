@@ -19,7 +19,7 @@ module ERelevance = EConstr.ERelevance
 (* many cases, TODO clean them up someday *)
 [@@@warning "-unused-field"]
 
-let debug_zify = CDebug.create ~name:"zify" ()
+let debug_zify = CDebug.create ~name:"zify-plugin" ()
 
 (* The following [constr] are necessary for constructing the proof terms *)
 
@@ -392,9 +392,9 @@ module type Elt = sig
   (*  val arity : int*)
 end
 
-let table = Summary.ref ~name:"zify_table" ConstrMap.empty
-let saturate = Summary.ref ~name:"zify_saturate" ConstrMap.empty
-let specs = Summary.ref ~name:"zify_specs" ConstrMap.empty
+let table = Summary.ref ~name:"zify-plugin_table" ConstrMap.empty
+let saturate = Summary.ref ~name:"zify-plugin_saturate" ConstrMap.empty
+let specs = Summary.ref ~name:"zify-plugin_specs" ConstrMap.empty
 let table_cache = ref ConstrMap.empty
 let saturate_cache = ref ConstrMap.empty
 let specs_cache = ref ConstrMap.empty
@@ -682,7 +682,7 @@ module MakeTable (E : Elt) : S = struct
     let subst_constr (subst, c) = Mod_subst.subst_mps subst c in
     Libobject.declare_object
     @@ Libobject.object_with_locality
-         ("register-zify-" ^ E.name)
+         ("register-zify-plugin-" ^ E.name)
          ~cache:cache_constr ~subst:(Some subst_constr)
          ~discharge:(fun _ -> assert false)
 

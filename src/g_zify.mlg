@@ -18,9 +18,9 @@ let locality = Zify.zify_register_locality
 
 }
 
-DECLARE PLUGIN "rocq-runtime.plugins.zify"
+DECLARE PLUGIN "micromega-plugin.zify"
 
-VERNAC COMMAND EXTEND DECLAREINJECTION CLASSIFIED AS SIDEFF
+VERNAC COMMAND EXTEND DECLAREZIFYINJECTION CLASSIFIED AS SIDEFF
 | #[ locality ] ["Add" "Zify" "InjTyp"   reference(t) ] -> { Zify.InjTable.register locality t }
 | #[ locality ] ["Add" "Zify" "BinOp"     reference(t) ] -> { Zify.BinOp.register locality t }
 | #[ locality ] ["Add" "Zify" "UnOp"      reference(t) ] -> { Zify.UnOp.register locality t }

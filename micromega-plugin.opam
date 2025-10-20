@@ -1,0 +1,21 @@
+opam-version: "2.0"
+synopsis: "Micromega plugin for Rocq"
+description: "Plugin for (semi)decision procedures for arithmetic."
+maintainer: ["Pierre Roux"]
+authors: ["Frederic Besson"]
+license: "LGPL-2.1"
+tags: [
+  "category:Miscellaneous/Rocq Extensions"
+  "keyword:micromega"
+  "logpath:micromega-plugin"
+]
+homepage: "https://github.com/rocq-community/micromega-plugin"
+bug-reports: "https://github.com/rocq-community/micromega-plugin/issues"
+depends: [
+  "dune" {>= "3.13"}
+  "ocaml" {>= "4.09.0"}
+  "rocq-core" {(>= "9.0" & < "9.3~") | = "dev"}
+  "ppx_optcomp"
+]
+dev-repo: "git+https://github.com/rocq-community/micromega-plugin.git"
+build: [ "make" ]
