@@ -29,5 +29,9 @@ module Saturate : S
 val zify_tac : unit Proofview.tactic
 val saturate : unit Proofview.tactic
 val iter_specs : unit Proofview.tactic
+[%%if rocq = "9.0" || rocq = "9.1" || rocq = "9.2"]
+val iter_let : Ltac_plugin.Tacinterp.Value.t -> unit Proofview.tactic
+[%%else]
 val iter_let : Ltac_plugin.Tacarg.tacvalue -> unit Proofview.tactic
+[%%endif]
 val elim_let : unit Proofview.tactic

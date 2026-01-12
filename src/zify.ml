@@ -116,11 +116,17 @@ module ConstrMap = struct
       m acc
 end
 
+[%%if rocq = "9.0" || rocq = "9.1" || rocq = "9.2"]
+let constr_compare = Constr.compare
+[%%else]
+let constr_compare = Termops.ConstrData.compare
+[%%endif]
+
 module HConstr = struct
   module M = Map.Make (struct
     type t = EConstr.t
 
-    let compare c c' = Termops.ConstrData.compare (unsafe_to_constr c) (unsafe_to_constr c')
+    let compare c c' = constr_compare (unsafe_to_constr c) (unsafe_to_constr c')
   end)
 
   type 'a t = 'a M.t
@@ -784,11 +790,17 @@ open EInjT
     the main tactic.
  *)
 
+[%%if rocq = "9.0" || rocq = "9.1" || rocq = "9.2"]
+let constr_hash = Constr.hash
+[%%else]
+let constr_hash = Termops.ConstrData.hash
+[%%endif]
+
 module CstrTable = struct
   module HConstr = Hashtbl.Make (struct
     type t = EConstr.t
 
-    let hash c = Termops.ConstrData.hash (unsafe_to_constr c)
+    let hash c = constr_hash (unsafe_to_constr c)
     let equal c c' = Constr.equal (unsafe_to_constr c) (unsafe_to_constr c')
   end)
 
@@ -1432,12 +1444,21 @@ let iter_let_aux tac =
       init_cache ();
       Tacticals.tclMAP (do_let tac) sign)
 
+[%%if rocq = "9.0" || rocq = "9.1" || rocq = "9.2"]
+let iter_let (tac : Ltac_plugin.Tacinterp.Value.t) =
+  iter_let_aux (fun (id : Names.Id.t) t ty ->
+      Ltac_plugin.Tacinterp.Value.apply tac
+        [ Ltac_plugin.Tacinterp.Value.of_constr (EConstr.mkVar id)
+        ; Ltac_plugin.Tacinterp.Value.of_constr t
+        ; Ltac_plugin.Tacinterp.Value.of_constr ty ])
+[%%else]
 let iter_let (tac : Ltac_plugin.Tacarg.tacvalue) =
   iter_let_aux (fun (id : Names.Id.t) t ty ->
       Ltac_plugin.Tacinterp.Value.apply tac
         [ Ltac_plugin.Tacinterp.Value.of_constr (EConstr.mkVar id)
         ; Ltac_plugin.Tacinterp.Value.of_constr t
         ; Ltac_plugin.Tacinterp.Value.of_constr ty ])
+[%%endif]
 
 let elim_let = iter_let_aux elim_binding
 

@@ -670,6 +670,12 @@ let assoc_ops sigma x l =
     snd (List.find (fun (x', y) -> EConstr.eq_constr sigma x (Lazy.force x')) l)
   with Not_found -> Ukn "Oups"
 
+[%%if rocq = "9.0" || rocq = "9.1"]
+let evd_add_constraints = Evd.add_universe_constraints
+[%%else]
+let evd_add_constraints = Evd.add_constraints
+[%%endif]
+
 (**
     * MODULE: Env is for environment.
     *)
@@ -688,7 +694,7 @@ module Env = struct
     match EConstr.eq_constr_universes_proj env sigma x y with
     | Some csts -> (
       let csts = UnivProblem.Set.force csts in
-      match Evd.add_constraints sigma csts with
+      match evd_add_constraints sigma csts with
       | sigma -> Some (env, sigma)
       | exception UGraph.UniverseInconsistency _ -> None )
     | None -> None
