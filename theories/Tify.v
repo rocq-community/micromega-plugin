@@ -14,6 +14,4 @@
 (*                                                                      *)
 (************************************************************************)
 
-Attributes deprecated(since="micromega-plugin 1.0", note="Use 'tify' instead.").
-
 Declare ML Module "micromega-plugin.tify".
