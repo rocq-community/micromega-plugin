@@ -1,6 +1,0 @@
-(library
- (name coqdeplib)
- (public_name rocq-runtime.coqdeplib)
- (libraries rocq-runtime.boot rocq-runtime.lib findlib.internal))
-
-(ocamllex lexer)

@@ -1,5 +1,0 @@
-{0 rocq }
-
-The rocq package is a virtual package gathering the main Rocq packages.
-
-For the documentation of the OCaml API of Rocq, see the {{: ../rocq-runtime/index.html } coq-core } package.

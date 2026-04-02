@@ -1,6 +1,0 @@
-use_foo
-use_bar
-use_nested
-PrintFullyQualified.use_foo
-PrintFullyQualified.use_bar
-PrintFullyQualified.use_nested

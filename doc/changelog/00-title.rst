@@ -1,5 +1,0 @@
-Unreleased changes
-------------------
-
-.. contents::
-   :local:

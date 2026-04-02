@@ -1,5 +1,0 @@
-File "./output/bug_12463.v", line 4, characters 2-11:
-The command has indeed failed with message:
-The user-defined tactic "foo" was not fully applied:
-There is a missing argument for variable H,
-no arguments at all were provided.

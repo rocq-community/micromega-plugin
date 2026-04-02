@@ -1,3 +1,0 @@
-File "./output/bug_21319.v", line 3, characters 26-29:
-The command has indeed failed with message:
-The variable bar was not found in the current environment.

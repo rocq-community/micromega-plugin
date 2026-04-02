@@ -1,4 +1,0 @@
-(** val effect0 : nat -> nat **)
-
-let effect0 x =
-  x
