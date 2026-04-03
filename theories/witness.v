@@ -14,9 +14,9 @@ From micromega_plugin Require Export ring_checker.
 
 Set Implicit Arguments.
 
-Register Pc as micromega.Pol.Pc.
-Register Pinj as micromega.Pol.Pinj.
-Register PX as micromega.Pol.PX.
+Register Pc as micromega_plugin.Pol.Pc.
+Register Pinj as micromega_plugin.Pol.Pinj.
+Register PX as micromega_plugin.Pol.PX.
 
 Inductive Psatz (C : Type) : Type :=
 | PsatzLet: Psatz C -> Psatz C -> Psatz C
@@ -28,18 +28,18 @@ Inductive Psatz (C : Type) : Type :=
 | PsatzC : C -> Psatz C
 | PsatzZ : Psatz C.
 
-Register PsatzLet as micromega.Psatz.PsatzLet.
-Register PsatzIn as micromega.Psatz.PsatzIn.
-Register PsatzSquare as micromega.Psatz.PsatzSquare.
-Register PsatzMulC as micromega.Psatz.PsatzMulC.
-Register PsatzMulE as micromega.Psatz.PsatzMulE.
-Register PsatzAdd as micromega.Psatz.PsatzAdd.
-Register PsatzC as micromega.Psatz.PsatzC.
-Register PsatzZ as micromega.Psatz.PsatzZ.
+Register PsatzLet as micromega_plugin.Psatz.PsatzLet.
+Register PsatzIn as micromega_plugin.Psatz.PsatzIn.
+Register PsatzSquare as micromega_plugin.Psatz.PsatzSquare.
+Register PsatzMulC as micromega_plugin.Psatz.PsatzMulC.
+Register PsatzMulE as micromega_plugin.Psatz.PsatzMulE.
+Register PsatzAdd as micromega_plugin.Psatz.PsatzAdd.
+Register PsatzC as micromega_plugin.Psatz.PsatzC.
+Register PsatzZ as micromega_plugin.Psatz.PsatzZ.
 
 Definition QWitness := Psatz Q.
 
-Register QWitness as micromega.QWitness.type.
+Register QWitness as micromega_plugin.QWitness.type.
 
 Definition ZWitness := Psatz Z.
 
@@ -55,9 +55,9 @@ Inductive ZArithProof :=
 #[deprecated(since="Stdlib 9.1")]
 Notation EnumProof := deprecated_EnumProof (only parsing).
 
-Register ZArithProof as micromega.ZArithProof.type.
-Register DoneProof as micromega.ZArithProof.DoneProof.
-Register RatProof as micromega.ZArithProof.RatProof.
-Register CutProof as micromega.ZArithProof.CutProof.
-Register SplitProof as micromega.ZArithProof.SplitProof.
-Register ExProof as micromega.ZArithProof.ExProof.
+Register ZArithProof as micromega_plugin.ZArithProof.type.
+Register DoneProof as micromega_plugin.ZArithProof.DoneProof.
+Register RatProof as micromega_plugin.ZArithProof.RatProof.
+Register CutProof as micromega_plugin.ZArithProof.CutProof.
+Register SplitProof as micromega_plugin.ZArithProof.SplitProof.
+Register ExProof as micromega_plugin.ZArithProof.ExProof.

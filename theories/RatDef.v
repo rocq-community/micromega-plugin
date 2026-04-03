@@ -12,8 +12,8 @@ is a very bad idea, due to its lack of canonicity
 
 Record Q : Set := Qmake {Qnum : Z; Qden : positive}.
 
-Register Q as rat.Q.type.
-Register Qmake as rat.Q.Qmake.
+Register Q as micromega_plugin.rat.Q.type.
+Register Qmake as micromega_plugin.rat.Q.Qmake.
 
 Definition Qeq_bool x y :=
   Z.eqb (Z.mul (Qnum x) (Zpos (Qden y))) (Z.mul (Qnum y) (Zpos (Qden x))).
