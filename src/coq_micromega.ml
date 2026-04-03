@@ -2442,98 +2442,98 @@ let micromega_gen parse_arith pre_process cnf spec dumpexpr prover tac =
 let micromega_genr prover tac =
   Tacticals.tclTHEN exfalso_if_concl_not_Prop (micromega_genr prover tac)
 
-let xlra_Q =
+let mp_lra_Q =
   micromega_gen parse_qarith
     (fun _ x -> x)
     Mc.cnfQ qq_domain_spec dump_qexpr linear_prover_Q
 
-let wlra_Q =
+let mp_wlra_Q =
   micromega_wit_gen
     (fun _ x -> x)
     Mc.cnfQ qq_domain_spec linear_prover_Q
 
-let xlra_R = micromega_genr linear_prover_R
+let mp_lra_R = micromega_genr linear_prover_R
 
-let xlia =
+let mp_lia =
   micromega_gen parse_zarith
     (fun _ x -> x)
     Mc.cnfZ zz_domain_spec dump_zexpr linear_Z
 
-let wlia =
+let mp_wlia =
   micromega_wit_gen
     (fun _ x -> x)
     Mc.cnfZ zz_domain_spec linear_Z
 
-let xnra_Q =
+let mp_nra_Q =
   micromega_gen parse_qarith
     (fun _ x -> x)
     Mc.cnfQ qq_domain_spec dump_qexpr nlinear_prover_R
 
-let wnra_Q =
+let mp_wnra_Q =
   micromega_wit_gen
     (fun _ x -> x)
     Mc.cnfQ qq_domain_spec nlinear_prover_R
 
-let xnra_R = micromega_genr nlinear_prover_R
+let mp_nra_R = micromega_genr nlinear_prover_R
 
-let xnia =
+let mp_nia =
   micromega_gen parse_zarith
     (fun _ x -> x)
     Mc.cnfZ zz_domain_spec dump_zexpr nlinear_Z
 
-let wnia =
+let mp_wnia =
   micromega_wit_gen
     (fun _ x -> x)
     Mc.cnfZ zz_domain_spec nlinear_Z
 
-let xsos_Q =
+let mp_sos_Q =
   micromega_gen parse_qarith
     (fun _ x -> x)
     Mc.cnfQ qq_domain_spec dump_qexpr
     (non_linear_prover_Q "pure_sos" None)
 
-let wsos_Q =
+let mp_wsos_Q =
   micromega_wit_gen
     (fun _ x -> x)
     Mc.cnfQ qq_domain_spec
     (non_linear_prover_Q "pure_sos" None)
 
-let xsos_R = micromega_genr (non_linear_prover_R "pure_sos" None)
+let mp_sos_R = micromega_genr (non_linear_prover_R "pure_sos" None)
 
-let xsos_Z =
+let mp_sos_Z =
   micromega_gen parse_zarith
     (fun _ x -> x)
     Mc.cnfZ zz_domain_spec dump_zexpr
     (non_linear_prover_Z "pure_sos" None)
 
-let wsos_Z =
+let mp_wsos_Z =
   micromega_wit_gen
     (fun _ x -> x)
     Mc.cnfZ zz_domain_spec
     (non_linear_prover_Z "pure_sos" None)
 
-let xpsatz_Q i =
+let mp_psatz_Q i =
   micromega_gen parse_qarith
     (fun _ x -> x)
     Mc.cnfQ qq_domain_spec dump_qexpr
     (non_linear_prover_Q "real_nonlinear_prover" (Some i))
 
-let wpsatz_Q i =
+let mp_wpsatz_Q i =
   micromega_wit_gen
     (fun _ x -> x)
     Mc.cnfQ qq_domain_spec
     (non_linear_prover_Q "real_nonlinear_prover" (Some i))
 
-let xpsatz_R i =
+let mp_psatz_R i =
   micromega_genr (non_linear_prover_R "real_nonlinear_prover" (Some i))
 
-let xpsatz_Z i =
+let mp_psatz_Z i =
   micromega_gen parse_zarith
     (fun _ x -> x)
     Mc.cnfZ zz_domain_spec dump_zexpr
     (non_linear_prover_Z "real_nonlinear_prover" (Some i))
 
-let wpsatz_Z i =
+let mp_wpsatz_Z i =
   micromega_wit_gen
     (fun _ x -> x)
     Mc.cnfZ zz_domain_spec

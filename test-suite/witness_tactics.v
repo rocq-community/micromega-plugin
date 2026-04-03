@@ -50,23 +50,23 @@ pose (ffZ :=
          Fop := OpLe;
          Frhs := PEc Z0
        |} tt) : BFormula (Formula Z) isProp).
-let ff' := eval unfold ffZ in ffZ in wlia wit1 ff'.
+let ff' := eval unfold ffZ in ffZ in mp_wlia wit1 ff'.
 Check eq_refl : wit1 = (CutProof (PsatzIn Z 1)
   (RatProof (PsatzAdd (PsatzIn Z 0) (PsatzIn Z 1)) DoneProof) :: nil)%list.
-let ff' := eval unfold ffZ in ffZ in wnia wit2 ff'.
+let ff' := eval unfold ffZ in ffZ in mp_wnia wit2 ff'.
 Check eq_refl : wit2 = (CutProof (PsatzIn Z 1)
   (RatProof (PsatzAdd (PsatzIn Z 0) (PsatzIn Z 1)) DoneProof) :: nil)%list.
-let ff' := eval unfold ffQ in ffQ in wnra_Q wit3 ff'.
+let ff' := eval unfold ffQ in ffQ in mp_wnra_Q wit3 ff'.
 Check eq_refl : wit3 = (PsatzAdd (PsatzIn Q 2)
   (PsatzAdd (PsatzIn Q 1) (PsatzMulE (PsatzC (Qmake (Zpos (xI xH)) xH)) (PsatzIn Q 0))) :: nil)%list.
-Fail let ff' := eval unfold ffQ in ffQ in wsos_Q wit4 ff'.
-Fail let ff' := eval unfold ffZ in ffZ in wsos_Z wit5 ff'.
+Fail let ff' := eval unfold ffQ in ffQ in mp_wsos_Q wit4 ff'.
+Fail let ff' := eval unfold ffZ in ffZ in mp_wsos_Z wit5 ff'.
 (* Requires Csdp, not in CI
-let ff' := eval unfold ffZ in ffZ in wpsatz_Z 3 wit6 ff'.
+let ff' := eval unfold ffZ in ffZ in mp_wpsatz_Z 3 wit6 ff'.
 Check eq_refl : wit6 = (RatProof (PsatzAdd (PsatzC (Zpos xH))
   (PsatzAdd (PsatzIn Z 1) (PsatzMulE (PsatzC (Zpos (xO xH))) (PsatzIn Z 0))))
   DoneProof :: nil)%list.
-let ff' := eval unfold ffQ in ffQ in wpsatz_Q 3 wit7 ff'.
+let ff' := eval unfold ffQ in ffQ in mp_wpsatz_Q 3 wit7 ff'.
 Check eq_refl : wit7 = (PsatzAdd (PsatzIn Q 0)
   (PsatzAdd (PsatzMulE (PsatzIn Q 2) (PsatzC (Qmake (Zpos xH) (xO xH))))
             (PsatzAdd (PsatzMulE (PsatzIn Q 1) (PsatzC (Qmake (Zpos xH) (xO xH))))

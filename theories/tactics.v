@@ -21,26 +21,26 @@ From micromega_plugin Require Import RatDef formula witness.
 of the micromega OCaml plugin. The following tactics are provided,
 where [ffQ : BFormula (Formula Q) isProp]
 and [ffZ : BFormula (Formula Z) isProp]:
-- wlra_Q wit ffQ : set [wit] to a value of type [list (Psatz Q)]
-- wlia wit ffZ : set [wit] to a value of type [list ZArithProof]
-- wnia wit ffZ : set [wit] to a value of type [list ZArithProof]
-- wnra_Q wit ffQ : set [wit] to a value of type [list (Psatz Q)]
-- wsos_Q wit ffQ : set [wit] to a value of type [list (Psatz Q)]
-- wsos_Z wit ffZ : set [wit] to a value of type [list ZArithProof]
-- wpsatz_Z <n> wit ffZ : set [wit] to a value of type [list ZArithProof]
-- wpsatz_Q <n> wit ffQ : set [wit] to a value of type [list (Psatz Q)]
+- mp_wlra_Q wit ffQ : set [wit] to a value of type [list (Psatz Q)]
+- mp_wlia wit ffZ : set [wit] to a value of type [list ZArithProof]
+- mp_wnia wit ffZ : set [wit] to a value of type [list ZArithProof]
+- mp_wnra_Q wit ffQ : set [wit] to a value of type [list (Psatz Q)]
+- mp_wsos_Q wit ffQ : set [wit] to a value of type [list (Psatz Q)]
+- mp_wsos_Z wit ffZ : set [wit] to a value of type [list ZArithProof]
+- mp_wpsatz_Z <n> wit ffZ : set [wit] to a value of type [list ZArithProof]
+- mp_wpsatz_Q <n> wit ffQ : set [wit] to a value of type [list (Psatz Q)]
 The last four require the external Csdp numerical solver.
 
 Beware that all tactic expect an Ltac name for [wit] and an actual
 value for [ff] (not just an identifier). That is, the following works
 <<
   pose (ff := ...).
-  let ff' := eval unfold ff in ff in wlra_Q wit ff'.
+  let ff' := eval unfold ff in ff in mp_wlra_Q wit ff'.
 >>
 but not
 <<
   pose (ff := ...).
-  wlra_Q wit ff.
+  mp_wlra_Q wit ff.
 >>
 See test-suite/micromega/witness_tactics.v for an example. *)
 
