@@ -1,0 +1,150 @@
+(************************************************************************)
+(*         *      The Rocq Prover / The Rocq Development Team           *)
+(*  v      *         Copyright INRIA, CNRS and contributors             *)
+(* <O___,, * (see version control and CREDITS file for authors & dates) *)
+(*   \VV/  **************************************************************)
+(*    //   *    This file is distributed under the terms of the         *)
+(*         *     GNU Lesser General Public License Version 2.1          *)
+(*         *     (see LICENSE file for the text of the license)         *)
+(************************************************************************)
+
+{
+
+open Ltac_plugin
+open Stdarg
+open Tacarg
+
+let locality = Tify.zify_register_locality
+
+let depr_since_mp_1_0 =
+  CWarnings.create_category ~from:[CWarnings.CoreCategories.deprecated]
+    ~name:"deprecated-since-micromega-plugin-v1.0" ()
+
+let deprecate_zify_tac zify_tac tify_tac =
+  CWarnings.create ~category:depr_since_mp_1_0
+    ~name:("deprecated-"^zify_tac)
+    (fun () -> Pp.(str "The tactic " ++ str zify_tac ++ str " is deprecated. Use " ++ str tify_tac ++ str " instead."))
+
+let deprecate_zify_vernac cmd1 cmd2 =
+  CWarnings.create ~category:depr_since_mp_1_0
+    ~name:("deprecated-"^cmd1^"-Zify-"^cmd2)
+    (fun () -> Pp.(
+       str cmd1 ++ str " Zify "++ str cmd2 ++ str " is deprecated. Use "++ str cmd1 ++ str " Tify "++ str cmd2 ++ str " instead."))
+
+let deprecate_zify_iter_specs = deprecate_zify_tac "zify_iter_specs" "tify_iter_specs"
+let deprecate_zify_iter_let = deprecate_zify_tac "zify_iter_let" "tify_iter_let"
+let deprecate_zify_elim_let = deprecate_zify_tac "zify_elim_let" "tify_elim_let"
+let deprecate_zify_op = deprecate_zify_tac "zify_op" "tify_op Z"
+let deprecate_zify_saturate = deprecate_zify_tac "zify_saturate" "tify_saturate"
+
+let deprecate_Add_InjTyp = deprecate_zify_vernac "Add" "InjTyp"
+let deprecate_Add_BinOp  = deprecate_zify_vernac "Add" "BinOp"
+let deprecate_Add_UnOp   = deprecate_zify_vernac "Add" "UnOp"
+let deprecate_Add_CstOp  = deprecate_zify_vernac "Add" "CstOp"
+let deprecate_Add_BinRel = deprecate_zify_vernac "Add" "BinRel"
+let deprecate_Add_PropOp = deprecate_zify_vernac "Add" "PropOp"
+let deprecate_Add_PropBinOp = deprecate_zify_vernac "Add" "PropBinOp"
+let deprecate_Add_PropUOp   = deprecate_zify_vernac "Add" "PropUOp"
+let deprecate_Add_BinOpSpec = deprecate_zify_vernac "Add" "BinOpSpec"
+let deprecate_Add_UnOpSpec  = deprecate_zify_vernac "Add" "UnOpSpec"
+let deprecate_Add_Saturate  = deprecate_zify_vernac "Add" "Saturate"
+
+let deprecate_Show_InjTyp = deprecate_zify_vernac "Show" "InjTyp"
+let deprecate_Show_BinOp  = deprecate_zify_vernac "Show" "BinOp"
+let deprecate_Show_UnOp   = deprecate_zify_vernac "Show" "UnOp"
+let deprecate_Show_CstOp  = deprecate_zify_vernac "Show" "CstOp"
+let deprecate_Show_BinRel = deprecate_zify_vernac "Show" "BinRel"
+let deprecate_Show_BinOpSpec = deprecate_zify_vernac "Show" "BinOpSpec"
+let deprecate_Show_UnOpSpec  = deprecate_zify_vernac "Show" "UnOpSpec"
+
+}
+
+DECLARE PLUGIN "micromega-plugin.tify"
+
+VERNAC COMMAND EXTEND DECLAREZIFYINJECTION CLASSIFIED AS SIDEFF
+| #[ locality ] ["Add" "Zify" "InjTyp"   reference(t) ] -> {
+  deprecate_Add_InjTyp (); Tify.InjTable.register locality t }
+| #[ locality ] ["Add" "Zify" "BinOp"     reference(t) ] -> {
+  deprecate_Add_BinOp (); Tify.BinOp.register locality t }
+| #[ locality ] ["Add" "Zify" "UnOp"      reference(t) ] -> {
+  deprecate_Add_UnOp (); Tify.UnOp.register locality t }
+| #[ locality ] ["Add" "Zify" "CstOp"     reference(t) ] -> {
+  deprecate_Add_CstOp (); Tify.CstOp.register locality t }
+| #[ locality ] ["Add" "Zify" "BinRel"    reference(t) ] -> {
+  deprecate_Add_BinRel (); Tify.BinRel.register locality t }
+| #[ locality ] ["Add" "Zify" "PropOp"    reference(t) ] -> {
+  deprecate_Add_PropOp (); Tify.PropBinOp.register locality t }
+| #[ locality ] ["Add" "Zify" "PropBinOp"    reference(t) ] -> {
+  deprecate_Add_PropBinOp (); Tify.PropBinOp.register locality t }
+| #[ locality ] ["Add" "Zify" "PropUOp"   reference(t) ] -> {
+    deprecate_Add_PropUOp (); Tify.PropUnOp.register locality t }
+| #[ locality ] ["Add" "Zify" "BinOpSpec" reference(t) ] -> {
+  deprecate_Add_BinOpSpec (); Tify.BinOpSpec.register locality t }
+| #[ locality ] ["Add" "Zify" "UnOpSpec"  reference(t) ] -> {
+  deprecate_Add_UnOpSpec (); Tify.UnOpSpec.register locality t }
+| #[ locality ] ["Add" "Zify" "Saturate"  reference(t) ] -> {
+  deprecate_Add_Saturate (); Tify.Saturate.register locality t }
+END
+
+VERNAC COMMAND EXTEND TIFYDECLAREINJECTION CLASSIFIED AS SIDEFF
+| #[ locality ] ["Add" "Tify" "InjTyp"   reference(t) ] -> { Tify.InjTable.register locality t }
+| #[ locality ] ["Add" "Tify" "BinOp"     reference(t) ] -> { Tify.BinOp.register locality t }
+| #[ locality ] ["Add" "Tify" "UnOp"      reference(t) ] -> { Tify.UnOp.register locality t }
+| #[ locality ] ["Add" "Tify" "CstOp"     reference(t) ] -> { Tify.CstOp.register locality t }
+| #[ locality ] ["Add" "Tify" "BinRel"    reference(t) ] -> { Tify.BinRel.register locality t }
+| #[ locality ] ["Add" "Tify" "PropOp"    reference(t) ] -> { Tify.PropBinOp.register locality t }
+| #[ locality ] ["Add" "Tify" "PropBinOp"    reference(t) ] -> { Tify.PropBinOp.register locality t }
+| #[ locality ] ["Add" "Tify" "PropUOp"   reference(t) ] -> { Tify.PropUnOp.register locality t }
+| #[ locality ] ["Add" "Tify" "BinOpSpec" reference(t) ] -> { Tify.BinOpSpec.register locality t }
+| #[ locality ] ["Add" "Tify" "UnOpSpec"  reference(t) ] -> { Tify.UnOpSpec.register locality t }
+| #[ locality ] ["Add" "Tify" "Saturate"  reference(t) ] -> { Tify.Saturate.register locality t }
+END
+
+
+TACTIC EXTEND ITER
+| [ "zify_iter_specs"] -> {
+  deprecate_zify_iter_specs (); Tify.iter_specs}
+| [ "tify_iter_specs"] -> { Tify.iter_specs}
+END
+
+TACTIC EXTEND TRANS
+| [ "zify_op"  ] -> {
+    deprecate_zify_op () ; Tify.zify_op ()}
+| [ "zify_saturate"  ] -> {
+    deprecate_zify_saturate () ; Tify.saturate }
+| [ "zify_iter_let" tactic(t)] -> {
+    deprecate_zify_iter_let (); Tify.iter_let t }
+| [ "zify_elim_let" ] -> {
+  deprecate_zify_elim_let (); Tify.elim_let }
+| [ "tify_op" reference(t) ] -> { Tify.tify_op t}
+| [ "tify_saturate"  ] -> { Tify.saturate }
+| [ "tify_elim_let" ] -> { Tify.elim_let }
+| [ "tify_iter_let" tactic(t)] -> { Tify.iter_let t }
+END
+
+VERNAC COMMAND EXTEND ZifyPrint CLASSIFIED AS SIDEFF
+|[ "Show" "Zify" "InjTyp" ] -> {
+   deprecate_Show_InjTyp (); Tify.InjTable.print () }
+|[ "Show" "Zify" "BinOp" ]  -> {
+   deprecate_Show_BinOp (); Tify.BinOp.print () }
+|[ "Show" "Zify" "UnOp" ]   -> {
+   deprecate_Show_UnOp (); Tify.UnOp.print () }
+|[ "Show" "Zify" "CstOp"]   -> {
+   deprecate_Show_CstOp (); Tify.CstOp.print () }
+|[ "Show" "Zify" "BinRel"]  -> {
+    deprecate_Show_BinRel (); Tify.BinRel.print () }
+|[ "Show" "Zify" "UnOpSpec"] -> {
+   deprecate_Show_UnOpSpec (); Tify.UnOpSpec.print() }
+|[ "Show" "Zify" "BinOpSpec"] -> {
+   deprecate_Show_BinOpSpec (); Tify.BinOpSpec.print() }
+END
+
+VERNAC COMMAND EXTEND TifyPrint CLASSIFIED AS SIDEFF
+|[ "Show" "Tify" "InjTyp" ] -> { Tify.InjTable.print () }
+|[ "Show" "Tify" "BinOp" ]  -> { Tify.BinOp.print () }
+|[ "Show" "Tify" "UnOp" ]   -> { Tify.UnOp.print () }
+|[ "Show" "Tify" "CstOp"]   -> { Tify.CstOp.print () }
+|[ "Show" "Tify" "BinRel"]  -> { Tify.BinRel.print () }
+|[ "Show" "Tify" "UnOpSpec"] -> { Tify.UnOpSpec.print() }
+|[ "Show" "Tify" "BinOpSpec"] -> { Tify.BinOpSpec.print() }
+END

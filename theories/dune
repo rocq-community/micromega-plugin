@@ -1,4 +1,4 @@
 (coq.theory
  (name micromega_plugin)
  (package micromega-plugin)
- (plugins micromega-plugin.plugin micromega-plugin.zify))
+ (plugins micromega-plugin.plugin micromega-plugin.tify))
