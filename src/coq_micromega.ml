@@ -165,154 +165,154 @@ let selecti s m =
 let constr_of_ref str =
   EConstr.of_constr (UnivGen.constr_of_monomorphic_global (Global.env ()) (Rocqlib.lib_ref str))
 
-let rocq_and = lazy (constr_of_ref "core.and.type")
-let rocq_or = lazy (constr_of_ref "core.or.type")
-let rocq_not = lazy (constr_of_ref "core.not.type")
-let rocq_iff = lazy (constr_of_ref "core.iff.type")
-let rocq_True = lazy (constr_of_ref "core.True.type")
-let rocq_False = lazy (constr_of_ref "core.False.type")
-let rocq_bool = lazy (constr_of_ref "core.bool.type")
-let rocq_true = lazy (constr_of_ref "core.bool.true")
-let rocq_false = lazy (constr_of_ref "core.bool.false")
-let rocq_andb = lazy (constr_of_ref "core.bool.andb")
-let rocq_orb = lazy (constr_of_ref "core.bool.orb")
-let rocq_implb = lazy (constr_of_ref "core.bool.implb")
-let rocq_eqb = lazy (constr_of_ref "core.bool.eqb")
-let rocq_negb = lazy (constr_of_ref "core.bool.negb")
-let rocq_cons = lazy (constr_of_ref "core.list.cons")
-let rocq_nil = lazy (constr_of_ref "core.list.nil")
-let rocq_list = lazy (constr_of_ref "core.list.type")
-let rocq_O = lazy (constr_of_ref "num.nat.O")
-let rocq_S = lazy (constr_of_ref "num.nat.S")
-let rocq_nat = lazy (constr_of_ref "num.nat.type")
-let rocq_unit = lazy (constr_of_ref "core.unit.type")
+let rocq_and () = constr_of_ref "core.and.type"
+let rocq_or () = constr_of_ref "core.or.type"
+let rocq_not () = constr_of_ref "core.not.type"
+let rocq_iff () = constr_of_ref "core.iff.type"
+let rocq_True () = constr_of_ref "core.True.type"
+let rocq_False () = constr_of_ref "core.False.type"
+let rocq_bool () = constr_of_ref "core.bool.type"
+let rocq_true () = constr_of_ref "core.bool.true"
+let rocq_false () = constr_of_ref "core.bool.false"
+let rocq_andb () = constr_of_ref "core.bool.andb"
+let rocq_orb () = constr_of_ref "core.bool.orb"
+let rocq_implb () = constr_of_ref "core.bool.implb"
+let rocq_eqb () = constr_of_ref "core.bool.eqb"
+let rocq_negb () = constr_of_ref "core.bool.negb"
+let rocq_cons () = constr_of_ref "core.list.cons"
+let rocq_nil () = constr_of_ref "core.list.nil"
+let rocq_list () = constr_of_ref "core.list.type"
+let rocq_O () = constr_of_ref "num.nat.O"
+let rocq_S () = constr_of_ref "num.nat.S"
+let rocq_nat () = constr_of_ref "num.nat.type"
+let rocq_unit () = constr_of_ref "core.unit.type"
 
 (*  let rocq_option = lazy (init_constant "option")*)
-let rocq_None = lazy (constr_of_ref "core.option.None")
-let rocq_tt = lazy (constr_of_ref "core.unit.tt")
-let rocq_Inl = lazy (constr_of_ref "core.sum.inl")
-let rocq_Inr = lazy (constr_of_ref "core.sum.inr")
-let rocq_N0 = lazy (constr_of_ref "num.N.N0")
-let rocq_Npos = lazy (constr_of_ref "num.N.Npos")
-let rocq_xH = lazy (constr_of_ref "num.pos.xH")
-let rocq_xO = lazy (constr_of_ref "num.pos.xO")
-let rocq_xI = lazy (constr_of_ref "num.pos.xI")
-let rocq_Z = lazy (constr_of_ref "num.Z.type")
-let rocq_ZERO = lazy (constr_of_ref "num.Z.Z0")
-let rocq_POS = lazy (constr_of_ref "num.Z.Zpos")
-let rocq_NEG = lazy (constr_of_ref "num.Z.Zneg")
-let rocq_Q = lazy (constr_of_ref "micromega_plugin.rat.Q.type")
-let rocq_Qmake = lazy (constr_of_ref "micromega_plugin.rat.Q.Qmake")
-let rocq_R = lazy (constr_of_ref "reals.R.type")
-let rocq_Rcst = lazy (constr_of_ref "micromega.Rcst.type")
-let rocq_C0 = lazy (constr_of_ref "micromega.Rcst.C0")
-let rocq_C1 = lazy (constr_of_ref "micromega.Rcst.C1")
-let rocq_CQ = lazy (constr_of_ref "micromega.Rcst.CQ")
-let rocq_CZ = lazy (constr_of_ref "micromega.Rcst.CZ")
-let rocq_CPlus = lazy (constr_of_ref "micromega.Rcst.CPlus")
-let rocq_CMinus = lazy (constr_of_ref "micromega.Rcst.CMinus")
-let rocq_CMult = lazy (constr_of_ref "micromega.Rcst.CMult")
-let rocq_CPow = lazy (constr_of_ref "micromega.Rcst.CPow")
-let rocq_CInv = lazy (constr_of_ref "micromega.Rcst.CInv")
-let rocq_COpp = lazy (constr_of_ref "micromega.Rcst.COpp")
-let rocq_R0 = lazy (constr_of_ref "reals.R.R0")
-let rocq_R1 = lazy (constr_of_ref "reals.R.R1")
-let rocq_proofTerm = lazy (constr_of_ref "micromega_plugin.ZArithProof.type")
-let rocq_doneProof = lazy (constr_of_ref "micromega_plugin.ZArithProof.DoneProof")
-let rocq_ratProof = lazy (constr_of_ref "micromega_plugin.ZArithProof.RatProof")
-let rocq_cutProof = lazy (constr_of_ref "micromega_plugin.ZArithProof.CutProof")
-let rocq_splitProof = lazy (constr_of_ref "micromega_plugin.ZArithProof.SplitProof")
-let rocq_enumProof = lazy (constr_of_ref "micromega_plugin.ZArithProof.EnumProof")
-let rocq_ExProof = lazy (constr_of_ref "micromega_plugin.ZArithProof.ExProof")
-let rocq_IsProp = lazy (constr_of_ref "micromega_plugin.kind.isProp")
-let rocq_IsBool = lazy (constr_of_ref "micromega_plugin.kind.isBool")
-let rocq_Zgt = lazy (constr_of_ref "num.Z.gt")
-let rocq_Zge = lazy (constr_of_ref "num.Z.ge")
-let rocq_Zle = lazy (constr_of_ref "num.Z.le")
-let rocq_Zlt = lazy (constr_of_ref "num.Z.lt")
-let rocq_Zgtb = lazy (constr_of_ref "num.Z.gtb")
-let rocq_Zgeb = lazy (constr_of_ref "num.Z.geb")
-let rocq_Zleb = lazy (constr_of_ref "num.Z.leb")
-let rocq_Zltb = lazy (constr_of_ref "num.Z.ltb")
-let rocq_Zeqb = lazy (constr_of_ref "num.Z.eqb")
-let rocq_eq = lazy (constr_of_ref "core.eq.type")
-let rocq_Zplus = lazy (constr_of_ref "num.Z.add")
-let rocq_Zminus = lazy (constr_of_ref "num.Z.sub")
-let rocq_Zopp = lazy (constr_of_ref "num.Z.opp")
-let rocq_Zmult = lazy (constr_of_ref "num.Z.mul")
-let rocq_Zpower = lazy (constr_of_ref "num.Z.pow")
-let rocq_Qle = lazy (constr_of_ref "rat.Q.Qle")
-let rocq_Qlt = lazy (constr_of_ref "rat.Q.Qlt")
-let rocq_Qeq = lazy (constr_of_ref "rat.Q.Qeq")
-let rocq_Qplus = lazy (constr_of_ref "rat.Q.Qplus")
-let rocq_Qminus = lazy (constr_of_ref "rat.Q.Qminus")
-let rocq_Qopp = lazy (constr_of_ref "rat.Q.Qopp")
-let rocq_Qmult = lazy (constr_of_ref "rat.Q.Qmult")
-let rocq_Qpower = lazy (constr_of_ref "rat.Q.Qpower")
-let rocq_Rgt = lazy (constr_of_ref "reals.R.Rgt")
-let rocq_Rge = lazy (constr_of_ref "reals.R.Rge")
-let rocq_Rle = lazy (constr_of_ref "reals.R.Rle")
-let rocq_Rlt = lazy (constr_of_ref "reals.R.Rlt")
-let rocq_Rplus = lazy (constr_of_ref "reals.R.Rplus")
-let rocq_Rminus = lazy (constr_of_ref "reals.R.Rminus")
-let rocq_Ropp = lazy (constr_of_ref "reals.R.Ropp")
-let rocq_Rmult = lazy (constr_of_ref "reals.R.Rmult")
-let rocq_Rinv = lazy (constr_of_ref "reals.R.Rinv")
-let rocq_Rpower = lazy (constr_of_ref "reals.R.pow")
-let rocq_powerZR = lazy (constr_of_ref "reals.R.powerRZ")
-let rocq_IZR = lazy (constr_of_ref "reals.R.IZR")
-let rocq_IQR = lazy (constr_of_ref "reals.R.Q2R")
-let rocq_PEX = lazy (constr_of_ref "micromega_plugin.PExpr.PEX")
-let rocq_PEc = lazy (constr_of_ref "micromega_plugin.PExpr.PEc")
-let rocq_PEadd = lazy (constr_of_ref "micromega_plugin.PExpr.PEadd")
-let rocq_PEopp = lazy (constr_of_ref "micromega_plugin.PExpr.PEopp")
-let rocq_PEmul = lazy (constr_of_ref "micromega_plugin.PExpr.PEmul")
-let rocq_PEsub = lazy (constr_of_ref "micromega_plugin.PExpr.PEsub")
-let rocq_PEpow = lazy (constr_of_ref "micromega_plugin.PExpr.PEpow")
-let rocq_PX = lazy (constr_of_ref "micromega_plugin.Pol.PX")
-let rocq_Pc = lazy (constr_of_ref "micromega_plugin.Pol.Pc")
-let rocq_Pinj = lazy (constr_of_ref "micromega_plugin.Pol.Pinj")
-let rocq_OpEq = lazy (constr_of_ref "micromega_plugin.Op2.OpEq")
-let rocq_OpNEq = lazy (constr_of_ref "micromega_plugin.Op2.OpNEq")
-let rocq_OpLe = lazy (constr_of_ref "micromega_plugin.Op2.OpLe")
-let rocq_OpLt = lazy (constr_of_ref "micromega_plugin.Op2.OpLt")
-let rocq_OpGe = lazy (constr_of_ref "micromega_plugin.Op2.OpGe")
-let rocq_OpGt = lazy (constr_of_ref "micromega_plugin.Op2.OpGt")
-let rocq_PsatzLet = lazy (constr_of_ref "micromega_plugin.Psatz.PsatzLet")
-let rocq_PsatzIn = lazy (constr_of_ref "micromega_plugin.Psatz.PsatzIn")
-let rocq_PsatzSquare = lazy (constr_of_ref "micromega_plugin.Psatz.PsatzSquare")
-let rocq_PsatzMulE = lazy (constr_of_ref "micromega_plugin.Psatz.PsatzMulE")
-let rocq_PsatzMultC = lazy (constr_of_ref "micromega_plugin.Psatz.PsatzMulC")
-let rocq_PsatzAdd = lazy (constr_of_ref "micromega_plugin.Psatz.PsatzAdd")
-let rocq_PsatzC = lazy (constr_of_ref "micromega_plugin.Psatz.PsatzC")
-let rocq_PsatzZ = lazy (constr_of_ref "micromega_plugin.Psatz.PsatzZ")
+let rocq_None () = constr_of_ref "core.option.None"
+let rocq_tt () = constr_of_ref "core.unit.tt"
+let rocq_Inl () = constr_of_ref "core.sum.inl"
+let rocq_Inr () = constr_of_ref "core.sum.inr"
+let rocq_N0 () = constr_of_ref "num.N.N0"
+let rocq_Npos () = constr_of_ref "num.N.Npos"
+let rocq_xH () = constr_of_ref "num.pos.xH"
+let rocq_xO () = constr_of_ref "num.pos.xO"
+let rocq_xI () = constr_of_ref "num.pos.xI"
+let rocq_Z () = constr_of_ref "num.Z.type"
+let rocq_ZERO () = constr_of_ref "num.Z.Z0"
+let rocq_POS () = constr_of_ref "num.Z.Zpos"
+let rocq_NEG () = constr_of_ref "num.Z.Zneg"
+let rocq_Q () = constr_of_ref "micromega_plugin.rat.Q.type"
+let rocq_Qmake () = constr_of_ref "micromega_plugin.rat.Q.Qmake"
+let rocq_R () = constr_of_ref "reals.R.type"
+let rocq_Rcst () = constr_of_ref "micromega.Rcst.type"
+let rocq_C0 () = constr_of_ref "micromega.Rcst.C0"
+let rocq_C1 () = constr_of_ref "micromega.Rcst.C1"
+let rocq_CQ () = constr_of_ref "micromega.Rcst.CQ"
+let rocq_CZ () = constr_of_ref "micromega.Rcst.CZ"
+let rocq_CPlus () = constr_of_ref "micromega.Rcst.CPlus"
+let rocq_CMinus () = constr_of_ref "micromega.Rcst.CMinus"
+let rocq_CMult () = constr_of_ref "micromega.Rcst.CMult"
+let rocq_CPow () = constr_of_ref "micromega.Rcst.CPow"
+let rocq_CInv () = constr_of_ref "micromega.Rcst.CInv"
+let rocq_COpp () = constr_of_ref "micromega.Rcst.COpp"
+let rocq_R0 () = constr_of_ref "reals.R.R0"
+let rocq_R1 () = constr_of_ref "reals.R.R1"
+let rocq_proofTerm () = constr_of_ref "micromega_plugin.ZArithProof.type"
+let rocq_doneProof () = constr_of_ref "micromega_plugin.ZArithProof.DoneProof"
+let rocq_ratProof () = constr_of_ref "micromega_plugin.ZArithProof.RatProof"
+let rocq_cutProof () = constr_of_ref "micromega_plugin.ZArithProof.CutProof"
+let rocq_splitProof () = constr_of_ref "micromega_plugin.ZArithProof.SplitProof"
+let rocq_enumProof () = constr_of_ref "micromega_plugin.ZArithProof.EnumProof"
+let rocq_ExProof () = constr_of_ref "micromega_plugin.ZArithProof.ExProof"
+let rocq_IsProp () = constr_of_ref "micromega_plugin.kind.isProp"
+let rocq_IsBool () = constr_of_ref "micromega_plugin.kind.isBool"
+let rocq_Zgt () = constr_of_ref "num.Z.gt"
+let rocq_Zge () = constr_of_ref "num.Z.ge"
+let rocq_Zle () = constr_of_ref "num.Z.le"
+let rocq_Zlt () = constr_of_ref "num.Z.lt"
+let rocq_Zgtb () = constr_of_ref "num.Z.gtb"
+let rocq_Zgeb () = constr_of_ref "num.Z.geb"
+let rocq_Zleb () = constr_of_ref "num.Z.leb"
+let rocq_Zltb () = constr_of_ref "num.Z.ltb"
+let rocq_Zeqb () = constr_of_ref "num.Z.eqb"
+let rocq_eq () = constr_of_ref "core.eq.type"
+let rocq_Zplus () = constr_of_ref "num.Z.add"
+let rocq_Zminus () = constr_of_ref "num.Z.sub"
+let rocq_Zopp () = constr_of_ref "num.Z.opp"
+let rocq_Zmult () = constr_of_ref "num.Z.mul"
+let rocq_Zpower () = constr_of_ref "num.Z.pow"
+let rocq_Qle () = constr_of_ref "rat.Q.Qle"
+let rocq_Qlt () = constr_of_ref "rat.Q.Qlt"
+let rocq_Qeq () = constr_of_ref "rat.Q.Qeq"
+let rocq_Qplus () = constr_of_ref "rat.Q.Qplus"
+let rocq_Qminus () = constr_of_ref "rat.Q.Qminus"
+let rocq_Qopp () = constr_of_ref "rat.Q.Qopp"
+let rocq_Qmult () = constr_of_ref "rat.Q.Qmult"
+let rocq_Qpower () = constr_of_ref "rat.Q.Qpower"
+let rocq_Rgt () = constr_of_ref "reals.R.Rgt"
+let rocq_Rge () = constr_of_ref "reals.R.Rge"
+let rocq_Rle () = constr_of_ref "reals.R.Rle"
+let rocq_Rlt () = constr_of_ref "reals.R.Rlt"
+let rocq_Rplus () = constr_of_ref "reals.R.Rplus"
+let rocq_Rminus () = constr_of_ref "reals.R.Rminus"
+let rocq_Ropp () = constr_of_ref "reals.R.Ropp"
+let rocq_Rmult () = constr_of_ref "reals.R.Rmult"
+let rocq_Rinv () = constr_of_ref "reals.R.Rinv"
+let rocq_Rpower () = constr_of_ref "reals.R.pow"
+let rocq_powerZR () = constr_of_ref "reals.R.powerRZ"
+let rocq_IZR () = constr_of_ref "reals.R.IZR"
+let rocq_IQR () = constr_of_ref "reals.R.Q2R"
+let rocq_PEX () = constr_of_ref "micromega_plugin.PExpr.PEX"
+let rocq_PEc () = constr_of_ref "micromega_plugin.PExpr.PEc"
+let rocq_PEadd () = constr_of_ref "micromega_plugin.PExpr.PEadd"
+let rocq_PEopp () = constr_of_ref "micromega_plugin.PExpr.PEopp"
+let rocq_PEmul () = constr_of_ref "micromega_plugin.PExpr.PEmul"
+let rocq_PEsub () = constr_of_ref "micromega_plugin.PExpr.PEsub"
+let rocq_PEpow () = constr_of_ref "micromega_plugin.PExpr.PEpow"
+let rocq_PX () = constr_of_ref "micromega_plugin.Pol.PX"
+let rocq_Pc () = constr_of_ref "micromega_plugin.Pol.Pc"
+let rocq_Pinj () = constr_of_ref "micromega_plugin.Pol.Pinj"
+let rocq_OpEq () = constr_of_ref "micromega_plugin.Op2.OpEq"
+let rocq_OpNEq () = constr_of_ref "micromega_plugin.Op2.OpNEq"
+let rocq_OpLe () = constr_of_ref "micromega_plugin.Op2.OpLe"
+let rocq_OpLt () = constr_of_ref "micromega_plugin.Op2.OpLt"
+let rocq_OpGe () = constr_of_ref "micromega_plugin.Op2.OpGe"
+let rocq_OpGt () = constr_of_ref "micromega_plugin.Op2.OpGt"
+let rocq_PsatzLet () = constr_of_ref "micromega_plugin.Psatz.PsatzLet"
+let rocq_PsatzIn () = constr_of_ref "micromega_plugin.Psatz.PsatzIn"
+let rocq_PsatzSquare () = constr_of_ref "micromega_plugin.Psatz.PsatzSquare"
+let rocq_PsatzMulE () = constr_of_ref "micromega_plugin.Psatz.PsatzMulE"
+let rocq_PsatzMultC () = constr_of_ref "micromega_plugin.Psatz.PsatzMulC"
+let rocq_PsatzAdd () = constr_of_ref "micromega_plugin.Psatz.PsatzAdd"
+let rocq_PsatzC () = constr_of_ref "micromega_plugin.Psatz.PsatzC"
+let rocq_PsatzZ () = constr_of_ref "micromega_plugin.Psatz.PsatzZ"
 
-(*  let rocq_GT     = lazy (m_constant "GT")*)
+(*  let rocq_GT     () = m_constant "GT"*)
 
-let rocq_DeclaredConstant =
-  lazy (constr_of_ref "micromega.DeclaredConstant.type")
+let rocq_DeclaredConstant () =
+  constr_of_ref "micromega.DeclaredConstant.type"
 
-let rocq_TT = lazy (constr_of_ref "micromega_plugin.GFormula.TT")
-let rocq_FF = lazy (constr_of_ref "micromega_plugin.GFormula.FF")
-let rocq_AND = lazy (constr_of_ref "micromega_plugin.GFormula.AND")
-let rocq_OR = lazy (constr_of_ref "micromega_plugin.GFormula.OR")
-let rocq_NOT = lazy (constr_of_ref "micromega_plugin.GFormula.NOT")
-let rocq_Atom = lazy (constr_of_ref "micromega_plugin.GFormula.A")
-let rocq_X = lazy (constr_of_ref "micromega_plugin.GFormula.X")
-let rocq_IMPL = lazy (constr_of_ref "micromega_plugin.GFormula.IMPL")
-let rocq_IFF = lazy (constr_of_ref "micromega_plugin.GFormula.IFF")
-let rocq_EQ = lazy (constr_of_ref "micromega_plugin.GFormula.EQ")
-let rocq_Formula = lazy (constr_of_ref "micromega_plugin.BFormula.type")
-let rocq_eKind = lazy (constr_of_ref "micromega_plugin.eKind")
+let rocq_TT () = constr_of_ref "micromega_plugin.GFormula.TT"
+let rocq_FF () = constr_of_ref "micromega_plugin.GFormula.FF"
+let rocq_AND () = constr_of_ref "micromega_plugin.GFormula.AND"
+let rocq_OR () = constr_of_ref "micromega_plugin.GFormula.OR"
+let rocq_NOT () = constr_of_ref "micromega_plugin.GFormula.NOT"
+let rocq_Atom () = constr_of_ref "micromega_plugin.GFormula.A"
+let rocq_X () = constr_of_ref "micromega_plugin.GFormula.X"
+let rocq_IMPL () = constr_of_ref "micromega_plugin.GFormula.IMPL"
+let rocq_IFF () = constr_of_ref "micromega_plugin.GFormula.IFF"
+let rocq_EQ () = constr_of_ref "micromega_plugin.GFormula.EQ"
+let rocq_Formula () = constr_of_ref "micromega_plugin.BFormula.type"
+let rocq_eKind () = constr_of_ref "micromega_plugin.eKind"
 
 (**
     * Initialization : a few Caml symbols are derived from other libraries;
     * QMicromega, ZArithRing, RingMicromega.
     *)
 
-let rocq_QWitness = lazy (constr_of_ref "micromega_plugin.QWitness.type")
-let rocq_Build = lazy (constr_of_ref "micromega_plugin.Formula.Build_Formula")
-let rocq_Cstr = lazy (constr_of_ref "micromega_plugin.Formula.type")
+let rocq_QWitness () = constr_of_ref "micromega_plugin.QWitness.type"
+let rocq_Build () = constr_of_ref "micromega_plugin.Formula.Build_Formula"
+let rocq_Cstr () = constr_of_ref "micromega_plugin.Formula.type"
 
 (**
     * Parsing and dumping : transformation functions between Caml and Rocq
@@ -350,8 +350,8 @@ let rec parse_nat sigma term =
 
 let rec dump_nat x =
   match x with
-  | Mc.O -> Lazy.force rocq_O
-  | Mc.S p -> EConstr.mkApp (Lazy.force rocq_S, [|dump_nat p|])
+  | Mc.O -> rocq_O()
+  | Mc.S p -> EConstr.mkApp (rocq_S(), [|dump_nat p|])
 
 let rec parse_positive sigma term =
   let i, c = get_left_construct sigma term in
@@ -363,9 +363,9 @@ let rec parse_positive sigma term =
 
 let rec dump_positive x =
   match x with
-  | Mc.XH -> Lazy.force rocq_xH
-  | Mc.XO p -> EConstr.mkApp (Lazy.force rocq_xO, [|dump_positive p|])
-  | Mc.XI p -> EConstr.mkApp (Lazy.force rocq_xI, [|dump_positive p|])
+  | Mc.XH -> rocq_xH()
+  | Mc.XO p -> EConstr.mkApp (rocq_xO(), [|dump_positive p|])
+  | Mc.XI p -> EConstr.mkApp (rocq_xI(), [|dump_positive p|])
 
 let parse_n sigma term =
   let i, c = get_left_construct sigma term in
@@ -376,8 +376,8 @@ let parse_n sigma term =
 
 let dump_n x =
   match x with
-  | Mc.N0 -> Lazy.force rocq_N0
-  | Mc.Npos p -> EConstr.mkApp (Lazy.force rocq_Npos, [|dump_positive p|])
+  | Mc.N0 -> rocq_N0()
+  | Mc.Npos p -> EConstr.mkApp (rocq_Npos(), [|dump_positive p|])
 
 (** [is_ground_term env sigma term] holds if the term [term]
       is an instance of the typeclass [DeclConstant.GT term]
@@ -394,7 +394,7 @@ let is_declared_term env evd t =
     try
       ignore
         (Class_tactics.resolve_one_typeclass env evd
-           (EConstr.mkApp (Lazy.force rocq_DeclaredConstant, [|typ; t|])));
+           (EConstr.mkApp (rocq_DeclaredConstant(), [|typ; t|])));
       true
     with Not_found -> false )
   | _ -> false
@@ -416,20 +416,20 @@ let parse_z sigma term =
 
 let dump_z x =
   match x with
-  | Mc.Z0 -> Lazy.force rocq_ZERO
-  | Mc.Zpos p -> EConstr.mkApp (Lazy.force rocq_POS, [|dump_positive p|])
-  | Mc.Zneg p -> EConstr.mkApp (Lazy.force rocq_NEG, [|dump_positive p|])
+  | Mc.Z0 -> rocq_ZERO()
+  | Mc.Zpos p -> EConstr.mkApp (rocq_POS(), [|dump_positive p|])
+  | Mc.Zneg p -> EConstr.mkApp (rocq_NEG(), [|dump_positive p|])
 
 
 let dump_q q =
   EConstr.mkApp
-    ( Lazy.force rocq_Qmake
+    ( rocq_Qmake()
     , [|dump_z q.Micromega.qnum; dump_positive q.Micromega.qden|] )
 
 let parse_q sigma term =
   match EConstr.kind sigma term with
   | App (c, args) ->
-    if EConstr.eq_constr sigma c (Lazy.force rocq_Qmake) then
+    if EConstr.eq_constr sigma c (rocq_Qmake()) then
       {Mc.qnum = parse_z sigma args.(0); Mc.qden = parse_positive sigma args.(1)}
     else raise ParseError
   | _ -> raise ParseError
@@ -449,38 +449,38 @@ let rec pp_Rcst o cst =
 
 let rec dump_Rcst cst =
   match cst with
-  | Mc.C0 -> Lazy.force rocq_C0
-  | Mc.C1 -> Lazy.force rocq_C1
-  | Mc.CQ q -> EConstr.mkApp (Lazy.force rocq_CQ, [|dump_q q|])
-  | Mc.CZ z -> EConstr.mkApp (Lazy.force rocq_CZ, [|dump_z z|])
+  | Mc.C0 -> rocq_C0()
+  | Mc.C1 -> rocq_C1()
+  | Mc.CQ q -> EConstr.mkApp (rocq_CQ(), [|dump_q q|])
+  | Mc.CZ z -> EConstr.mkApp (rocq_CZ(), [|dump_z z|])
   | Mc.CPlus (x, y) ->
-    EConstr.mkApp (Lazy.force rocq_CPlus, [|dump_Rcst x; dump_Rcst y|])
+    EConstr.mkApp (rocq_CPlus(), [|dump_Rcst x; dump_Rcst y|])
   | Mc.CMinus (x, y) ->
-    EConstr.mkApp (Lazy.force rocq_CMinus, [|dump_Rcst x; dump_Rcst y|])
+    EConstr.mkApp (rocq_CMinus(), [|dump_Rcst x; dump_Rcst y|])
   | Mc.CMult (x, y) ->
-    EConstr.mkApp (Lazy.force rocq_CMult, [|dump_Rcst x; dump_Rcst y|])
+    EConstr.mkApp (rocq_CMult(), [|dump_Rcst x; dump_Rcst y|])
   | Mc.CPow (x, y) ->
     EConstr.mkApp
-      ( Lazy.force rocq_CPow
+      ( rocq_CPow()
       , [| dump_Rcst x
          ; ( match y with
            | Mc.Inl z ->
              EConstr.mkApp
-               ( Lazy.force rocq_Inl
-               , [|Lazy.force rocq_Z; Lazy.force rocq_nat; dump_z z|] )
+               ( rocq_Inl()
+               , [|rocq_Z(); rocq_nat(); dump_z z|] )
            | Mc.Inr n ->
              EConstr.mkApp
-               ( Lazy.force rocq_Inr
-               , [|Lazy.force rocq_Z; Lazy.force rocq_nat; dump_nat n|] ) ) |] )
-  | Mc.CInv t -> EConstr.mkApp (Lazy.force rocq_CInv, [|dump_Rcst t|])
-  | Mc.COpp t -> EConstr.mkApp (Lazy.force rocq_COpp, [|dump_Rcst t|])
+               ( rocq_Inr()
+               , [|rocq_Z(); rocq_nat(); dump_nat n|] ) ) |] )
+  | Mc.CInv t -> EConstr.mkApp (rocq_CInv(), [|dump_Rcst t|])
+  | Mc.COpp t -> EConstr.mkApp (rocq_COpp(), [|dump_Rcst t|])
 
 let rec dump_list typ dump_elt l =
   match l with
-  | [] -> EConstr.mkApp (Lazy.force rocq_nil, [|typ|])
+  | [] -> EConstr.mkApp (rocq_nil(), [|typ|])
   | e :: l ->
     EConstr.mkApp
-      (Lazy.force rocq_cons, [|typ; dump_elt e; dump_list typ dump_elt l|])
+      (rocq_cons(), [|typ; dump_elt e; dump_list typ dump_elt l|])
 
 
 let undump_var = parse_positive
@@ -488,7 +488,7 @@ let undump_var = parse_positive
 let dump_var = dump_positive
 
 let undump_expr undump_constant sigma e =
-  let is c c' = EConstr.eq_constr sigma c (Lazy.force c') in
+  let is c c' = EConstr.eq_constr sigma c (c'()) in
   let rec xundump e =
     match EConstr.kind sigma e with
     | App (c, [|_; n|]) when is c rocq_PEX -> Mc.PEX (undump_var sigma n)
@@ -509,29 +509,29 @@ let undump_expr undump_constant sigma e =
 let dump_expr typ dump_z e =
   let rec dump_expr e =
     match e with
-    | Mc.PEX n -> EConstr.mkApp (Lazy.force rocq_PEX, [|typ; dump_var n|])
-    | Mc.PEc z -> EConstr.mkApp (Lazy.force rocq_PEc, [|typ; dump_z z|])
+    | Mc.PEX n -> EConstr.mkApp (rocq_PEX(), [|typ; dump_var n|])
+    | Mc.PEc z -> EConstr.mkApp (rocq_PEc(), [|typ; dump_z z|])
     | Mc.PEadd (e1, e2) ->
-      EConstr.mkApp (Lazy.force rocq_PEadd, [|typ; dump_expr e1; dump_expr e2|])
+      EConstr.mkApp (rocq_PEadd(), [|typ; dump_expr e1; dump_expr e2|])
     | Mc.PEsub (e1, e2) ->
-      EConstr.mkApp (Lazy.force rocq_PEsub, [|typ; dump_expr e1; dump_expr e2|])
-    | Mc.PEopp e -> EConstr.mkApp (Lazy.force rocq_PEopp, [|typ; dump_expr e|])
+      EConstr.mkApp (rocq_PEsub(), [|typ; dump_expr e1; dump_expr e2|])
+    | Mc.PEopp e -> EConstr.mkApp (rocq_PEopp(), [|typ; dump_expr e|])
     | Mc.PEmul (e1, e2) ->
-      EConstr.mkApp (Lazy.force rocq_PEmul, [|typ; dump_expr e1; dump_expr e2|])
+      EConstr.mkApp (rocq_PEmul(), [|typ; dump_expr e1; dump_expr e2|])
     | Mc.PEpow (e, n) ->
-      EConstr.mkApp (Lazy.force rocq_PEpow, [|typ; dump_expr e; dump_n n|])
+      EConstr.mkApp (rocq_PEpow(), [|typ; dump_expr e; dump_n n|])
   in
   dump_expr e
 
 let dump_pol typ dump_c e =
   let rec dump_pol e =
     match e with
-    | Mc.Pc n -> EConstr.mkApp (Lazy.force rocq_Pc, [|typ; dump_c n|])
+    | Mc.Pc n -> EConstr.mkApp (rocq_Pc(), [|typ; dump_c n|])
     | Mc.Pinj (p, pol) ->
-      EConstr.mkApp (Lazy.force rocq_Pinj, [|typ; dump_positive p; dump_pol pol|])
+      EConstr.mkApp (rocq_Pinj(), [|typ; dump_positive p; dump_pol pol|])
     | Mc.PX (pol1, p, pol2) ->
       EConstr.mkApp
-        ( Lazy.force rocq_PX
+        ( rocq_PX()
         , [|typ; dump_pol pol1; dump_positive p; dump_pol pol2|] )
   in
   dump_pol e
@@ -550,23 +550,23 @@ let pp_cnf_tag o (f : 'cst cnf) =
   List.iter (fun l -> Printf.fprintf o "[%a]" pp_clause_tag l) f
 
 let dump_psatz typ dump_z e =
-  let z = Lazy.force typ in
+  let z = typ() in
   let rec dump_cone e =
     match e with
     | Mc.PsatzLet (e1, e2) ->
-      EConstr.mkApp (Lazy.force rocq_PsatzLet, [|z; dump_cone e1; dump_cone e2|])
-    | Mc.PsatzIn n -> EConstr.mkApp (Lazy.force rocq_PsatzIn, [|z; dump_nat n|])
+      EConstr.mkApp (rocq_PsatzLet(), [|z; dump_cone e1; dump_cone e2|])
+    | Mc.PsatzIn n -> EConstr.mkApp (rocq_PsatzIn(), [|z; dump_nat n|])
     | Mc.PsatzMulC (e, c) ->
       EConstr.mkApp
-        (Lazy.force rocq_PsatzMultC, [|z; dump_pol z dump_z e; dump_cone c|])
+        (rocq_PsatzMultC(), [|z; dump_pol z dump_z e; dump_cone c|])
     | Mc.PsatzSquare e ->
-      EConstr.mkApp (Lazy.force rocq_PsatzSquare, [|z; dump_pol z dump_z e|])
+      EConstr.mkApp (rocq_PsatzSquare(), [|z; dump_pol z dump_z e|])
     | Mc.PsatzAdd (e1, e2) ->
-      EConstr.mkApp (Lazy.force rocq_PsatzAdd, [|z; dump_cone e1; dump_cone e2|])
+      EConstr.mkApp (rocq_PsatzAdd(), [|z; dump_cone e1; dump_cone e2|])
     | Mc.PsatzMulE (e1, e2) ->
-      EConstr.mkApp (Lazy.force rocq_PsatzMulE, [|z; dump_cone e1; dump_cone e2|])
-    | Mc.PsatzC p -> EConstr.mkApp (Lazy.force rocq_PsatzC, [|z; dump_z p|])
-    | Mc.PsatzZ -> EConstr.mkApp (Lazy.force rocq_PsatzZ, [|z|])
+      EConstr.mkApp (rocq_PsatzMulE(), [|z; dump_cone e1; dump_cone e2|])
+    | Mc.PsatzC p -> EConstr.mkApp (rocq_PsatzC(), [|z; dump_z p|])
+    | Mc.PsatzZ -> EConstr.mkApp (rocq_PsatzZ(), [|z|])
   in
   dump_cone e
 
@@ -582,15 +582,15 @@ let undump_op sigma c =
   | _ -> raise ParseError
 
 let dump_op = function
-  | Mc.OpEq -> Lazy.force rocq_OpEq
-  | Mc.OpNEq -> Lazy.force rocq_OpNEq
-  | Mc.OpLe -> Lazy.force rocq_OpLe
-  | Mc.OpGe -> Lazy.force rocq_OpGe
-  | Mc.OpGt -> Lazy.force rocq_OpGt
-  | Mc.OpLt -> Lazy.force rocq_OpLt
+  | Mc.OpEq -> rocq_OpEq()
+  | Mc.OpNEq -> rocq_OpNEq()
+  | Mc.OpLe -> rocq_OpLe()
+  | Mc.OpGe -> rocq_OpGe()
+  | Mc.OpGt -> rocq_OpGt()
+  | Mc.OpLt -> rocq_OpLt()
 
 let undump_cstr undump_constant sigma c =
-  let is c c' = EConstr.eq_constr sigma c (Lazy.force c') in
+  let is c c' = EConstr.eq_constr sigma c (c'()) in
   match EConstr.kind sigma c with
   | App (c, [|_; e1; o; e2|]) when is c rocq_Build ->
     {Mc.flhs = undump_expr undump_constant sigma e1;
@@ -600,7 +600,7 @@ let undump_cstr undump_constant sigma c =
 
 let dump_cstr typ dump_constant {Mc.flhs = e1; Mc.fop = o; Mc.frhs = e2} =
   EConstr.mkApp
-    ( Lazy.force rocq_Build
+    ( rocq_Build()
     , [| typ
        ; dump_expr typ dump_constant e1
        ; dump_op o
@@ -608,7 +608,7 @@ let dump_cstr typ dump_constant {Mc.flhs = e1; Mc.fop = o; Mc.frhs = e2} =
 
 let assoc_const sigma x l =
   try
-    snd (List.find (fun (x', y) -> EConstr.eq_constr sigma x (Lazy.force x')) l)
+    snd (List.find (fun (x', y) -> EConstr.eq_constr sigma x (x'())) l)
   with Not_found -> raise ParseError
 
 let zop_table_prop =
@@ -649,8 +649,8 @@ let parse_operator table_prop table_bool has_equality typ (env, sigma) k
   | [|ty; a1; a2|] ->
     if
       has_equality
-      && EConstr.eq_constr sigma op (Lazy.force rocq_eq)
-      && is_convertible env sigma ty (Lazy.force typ)
+      && EConstr.eq_constr sigma op (rocq_eq())
+      && is_convertible env sigma ty (typ())
     then (Mc.OpEq, args.(1), args.(2))
     else raise ParseError
   | _ -> raise ParseError
@@ -667,7 +667,7 @@ type 'a op =
 
 let assoc_ops sigma x l =
   try
-    snd (List.find (fun (x', y) -> EConstr.eq_constr sigma x (Lazy.force x')) l)
+    snd (List.find (fun (x', y) -> EConstr.eq_constr sigma x (x'())) l)
   with Not_found -> Ukn "Oups"
 
 [%%if rocq = "9.0" || rocq = "9.1"]
@@ -869,8 +869,8 @@ let rconstant (genv, sigma) term =
   let rec rconstant term =
     match EConstr.kind sigma term with
     | Const x ->
-      if EConstr.eq_constr sigma term (Lazy.force rocq_R0) then Mc.C0
-      else if EConstr.eq_constr sigma term (Lazy.force rocq_R1) then Mc.C1
+      if EConstr.eq_constr sigma term (rocq_R0()) then Mc.C0
+      else if EConstr.eq_constr sigma term (rocq_R1()) then Mc.C1
       else raise ParseError
     | App (op, args) -> (
       try
@@ -881,18 +881,18 @@ let rconstant (genv, sigma) term =
         f a b
       with ParseError -> (
         match op with
-        | op when EConstr.eq_constr sigma op (Lazy.force rocq_Rinv) ->
+        | op when EConstr.eq_constr sigma op (rocq_Rinv()) ->
           let arg = rconstant args.(0) in
           if Mc.qeq_bool (Mc.q_of_Rcst arg) {Mc.qnum = Mc.Z0; Mc.qden = Mc.XH}
           then raise ParseError (* This is a division by zero -- no semantics *)
           else Mc.CInv arg
-        | op when EConstr.eq_constr sigma op (Lazy.force rocq_Rpower) ->
+        | op when EConstr.eq_constr sigma op (rocq_Rpower()) ->
           Mc.CPow
             ( rconstant args.(0)
             , Mc.Inr (parse_more_constant nconstant (genv, sigma) args.(1)) )
-        | op when EConstr.eq_constr sigma op (Lazy.force rocq_IQR) ->
+        | op when EConstr.eq_constr sigma op (rocq_IQR()) ->
           Mc.CQ (qconstant (genv, sigma) args.(0))
-        | op when EConstr.eq_constr sigma op (Lazy.force rocq_IZR) ->
+        | op when EConstr.eq_constr sigma op (rocq_IZR()) ->
           Mc.CZ (parse_more_constant zconstant (genv, sigma) args.(0))
         | _ -> raise ParseError ) )
     | _ -> raise ParseError
@@ -978,25 +978,23 @@ type formula_op =
   ; op_tt : EConstr.t
   ; op_ff : EConstr.t }
 
-let prop_op =
-  lazy
+let prop_op() =
     { op_impl = None (* implication is Prod *)
-    ; op_and = Lazy.force rocq_and
-    ; op_or = Lazy.force rocq_or
-    ; op_iff = Lazy.force rocq_iff
-    ; op_not = Lazy.force rocq_not
-    ; op_tt = Lazy.force rocq_True
-    ; op_ff = Lazy.force rocq_False }
+    ; op_and = rocq_and()
+    ; op_or = rocq_or()
+    ; op_iff = rocq_iff()
+    ; op_not = rocq_not()
+    ; op_tt = rocq_True()
+    ; op_ff = rocq_False() }
 
-let bool_op =
-  lazy
-    { op_impl = Some (Lazy.force rocq_implb)
-    ; op_and = Lazy.force rocq_andb
-    ; op_or = Lazy.force rocq_orb
-    ; op_iff = Lazy.force rocq_eqb
-    ; op_not = Lazy.force rocq_negb
-    ; op_tt = Lazy.force rocq_true
-    ; op_ff = Lazy.force rocq_false }
+let bool_op () =
+    { op_impl = Some (rocq_implb())
+    ; op_and = rocq_andb()
+    ; op_or = rocq_orb()
+    ; op_iff = rocq_eqb()
+    ; op_not = rocq_negb()
+    ; op_tt = rocq_true()
+    ; op_ff = rocq_false() }
 
 let is_implb sigma l o =
   match o with None -> false | Some c -> EConstr.eq_constr sigma l c
@@ -1008,10 +1006,10 @@ let parse_formula (genv, sigma) parse_atom env tg term =
       (Mc.A (b, at, (tg, t)), env, Tag.next tg)
     with ParseError -> (Mc.X (b, t), env, tg)
   in
-  let prop_op = Lazy.force prop_op in
-  let bool_op = Lazy.force bool_op in
-  let eq = Lazy.force rocq_eq in
-  let bool = Lazy.force rocq_bool in
+  let prop_op = prop_op() in
+  let bool_op = bool_op() in
+  let eq = rocq_eq() in
+  let bool = rocq_bool() in
   let rec xparse_formula op k env tg term =
     match EConstr.kind sigma term with
     | App (l, rst) -> (
@@ -1058,14 +1056,14 @@ let parse_formula (genv, sigma) parse_atom env tg term =
 (*  let dump_bool b = Lazy.force (if b then rocq_true else rocq_false)*)
 
 let undump_kind sigma k =
-  if EConstr.eq_constr sigma k (Lazy.force rocq_IsProp) then Mc.IsProp
+  if EConstr.eq_constr sigma k (rocq_IsProp()) then Mc.IsProp
   else Mc.IsBool
 
 let dump_kind k =
-  Lazy.force (match k with Mc.IsProp -> rocq_IsProp | Mc.IsBool -> rocq_IsBool)
+  match k with Mc.IsProp -> rocq_IsProp() | Mc.IsBool -> rocq_IsBool()
 
 let undump_formula undump_atom tg sigma f =
-  let is c c' = EConstr.eq_constr sigma c (Lazy.force c') in
+  let is c c' = EConstr.eq_constr sigma c (c'()) in
   let kind k = undump_kind sigma k in
   let rec xundump f =
     match EConstr.kind sigma f with
@@ -1094,10 +1092,10 @@ let undump_formula undump_atom tg sigma f =
 let dump_formula typ dump_atom f =
   let app_ctor c args =
     EConstr.mkApp
-      ( Lazy.force c
+      ( c()
       , Array.of_list
-          ( typ :: Lazy.force rocq_eKind :: Lazy.force rocq_unit
-          :: Lazy.force rocq_unit :: args ) )
+          ( typ :: rocq_eKind() :: rocq_unit()
+          :: rocq_unit() :: args ) )
   in
   let rec xdump f =
     match f with
@@ -1109,13 +1107,13 @@ let dump_formula typ dump_atom f =
       app_ctor rocq_IMPL
         [ dump_kind k
         ; xdump x
-        ; EConstr.mkApp (Lazy.force rocq_None, [|Lazy.force rocq_unit|])
+        ; EConstr.mkApp (rocq_None(), [|rocq_unit()|])
         ; xdump y ]
     | Mc.NOT (k, x) -> app_ctor rocq_NOT [dump_kind k; xdump x]
     | Mc.IFF (k, x, y) -> app_ctor rocq_IFF [dump_kind k; xdump x; xdump y]
     | Mc.EQ (x, y) -> app_ctor rocq_EQ [xdump x; xdump y]
     | Mc.A (k, x, _) ->
-      app_ctor rocq_Atom [dump_kind k; dump_atom x; Lazy.force rocq_tt]
+      app_ctor rocq_Atom [dump_kind k; dump_atom x; rocq_tt()]
     | Mc.X (k, t) -> app_ctor rocq_X [dump_kind k; t]
   in
   xdump f
@@ -1171,68 +1169,65 @@ type 'cst dump_expr =
   ; dump_op_prop : (Mc.op2 * EConstr.constr) list
   ; dump_op_bool : (Mc.op2 * EConstr.constr) list }
 
-let dump_zexpr =
-  lazy
-    { interp_typ = Lazy.force rocq_Z
-    ; dump_cst = dump_z
-    ; dump_add = Lazy.force rocq_Zplus
-    ; dump_sub = Lazy.force rocq_Zminus
-    ; dump_opp = Lazy.force rocq_Zopp
-    ; dump_mul = Lazy.force rocq_Zmult
-    ; dump_pow = Lazy.force rocq_Zpower
-    ; dump_pow_arg = (fun n -> dump_z (CamlToCoq.z (CoqToCaml.n n)))
-    ; dump_op_prop = List.map (fun (x, y) -> (y, Lazy.force x)) zop_table_prop
-    ; dump_op_bool = List.map (fun (x, y) -> (y, Lazy.force x)) zop_table_bool
-    }
+let dump_zexpr () =
+  { interp_typ = rocq_Z()
+  ; dump_cst = dump_z
+  ; dump_add = rocq_Zplus()
+  ; dump_sub = rocq_Zminus()
+  ; dump_opp = rocq_Zopp()
+  ; dump_mul = rocq_Zmult()
+  ; dump_pow = rocq_Zpower()
+  ; dump_pow_arg = (fun n -> dump_z (CamlToCoq.z (CoqToCaml.n n)))
+  ; dump_op_prop = List.map (fun (x, y) -> (y, x())) zop_table_prop
+  ; dump_op_bool = List.map (fun (x, y) -> (y, x())) zop_table_bool
+  }
 
-let dump_qexpr =
-  lazy
-    { interp_typ = Lazy.force rocq_Q
-    ; dump_cst = dump_q
-    ; dump_add = Lazy.force rocq_Qplus
-    ; dump_sub = Lazy.force rocq_Qminus
-    ; dump_opp = Lazy.force rocq_Qopp
-    ; dump_mul = Lazy.force rocq_Qmult
-    ; dump_pow = Lazy.force rocq_Qpower
-    ; dump_pow_arg = (fun n -> dump_z (CamlToCoq.z (CoqToCaml.n n)))
-    ; dump_op_prop = List.map (fun (x, y) -> (y, Lazy.force x)) qop_table_prop
-    ; dump_op_bool = List.map (fun (x, y) -> (y, Lazy.force x)) qop_table_bool
-    }
+let dump_qexpr () =
+  { interp_typ = rocq_Q()
+  ; dump_cst = dump_q
+  ; dump_add = rocq_Qplus()
+  ; dump_sub = rocq_Qminus()
+  ; dump_opp = rocq_Qopp()
+  ; dump_mul = rocq_Qmult()
+  ; dump_pow = rocq_Qpower()
+  ; dump_pow_arg = (fun n -> dump_z (CamlToCoq.z (CoqToCaml.n n)))
+  ; dump_op_prop = List.map (fun (x, y) -> (y, x())) qop_table_prop
+  ; dump_op_bool = List.map (fun (x, y) -> (y, x())) qop_table_bool
+  }
 
 let rec dump_Rcst_as_R cst =
   match cst with
-  | Mc.C0 -> Lazy.force rocq_R0
-  | Mc.C1 -> Lazy.force rocq_R1
-  | Mc.CQ q -> EConstr.mkApp (Lazy.force rocq_IQR, [|dump_q q|])
-  | Mc.CZ z -> EConstr.mkApp (Lazy.force rocq_IZR, [|dump_z z|])
+  | Mc.C0 -> rocq_R0()
+  | Mc.C1 -> rocq_R1()
+  | Mc.CQ q -> EConstr.mkApp (rocq_IQR(), [|dump_q q|])
+  | Mc.CZ z -> EConstr.mkApp (rocq_IZR(), [|dump_z z|])
   | Mc.CPlus (x, y) ->
-    EConstr.mkApp (Lazy.force rocq_Rplus, [|dump_Rcst_as_R x; dump_Rcst_as_R y|])
+    EConstr.mkApp (rocq_Rplus(), [|dump_Rcst_as_R x; dump_Rcst_as_R y|])
   | Mc.CMinus (x, y) ->
-    EConstr.mkApp (Lazy.force rocq_Rminus, [|dump_Rcst_as_R x; dump_Rcst_as_R y|])
+    EConstr.mkApp (rocq_Rminus(), [|dump_Rcst_as_R x; dump_Rcst_as_R y|])
   | Mc.CMult (x, y) ->
-    EConstr.mkApp (Lazy.force rocq_Rmult, [|dump_Rcst_as_R x; dump_Rcst_as_R y|])
+    EConstr.mkApp (rocq_Rmult(), [|dump_Rcst_as_R x; dump_Rcst_as_R y|])
   | Mc.CPow (x, y) -> (
     match y with
     | Mc.Inl z ->
-      EConstr.mkApp (Lazy.force rocq_powerZR, [|dump_Rcst_as_R x; dump_z z|])
+      EConstr.mkApp (rocq_powerZR(), [|dump_Rcst_as_R x; dump_z z|])
     | Mc.Inr n ->
-      EConstr.mkApp (Lazy.force rocq_Rpower, [|dump_Rcst_as_R x; dump_nat n|]) )
-  | Mc.CInv t -> EConstr.mkApp (Lazy.force rocq_Rinv, [|dump_Rcst_as_R t|])
-  | Mc.COpp t -> EConstr.mkApp (Lazy.force rocq_Ropp, [|dump_Rcst_as_R t|])
+      EConstr.mkApp (rocq_Rpower(), [|dump_Rcst_as_R x; dump_nat n|]) )
+  | Mc.CInv t -> EConstr.mkApp (rocq_Rinv(), [|dump_Rcst_as_R t|])
+  | Mc.COpp t -> EConstr.mkApp (rocq_Ropp(), [|dump_Rcst_as_R t|])
 
-let dump_rexpr =
-  lazy
-    { interp_typ = Lazy.force rocq_R
-    ; dump_cst = dump_Rcst_as_R
-    ; dump_add = Lazy.force rocq_Rplus
-    ; dump_sub = Lazy.force rocq_Rminus
-    ; dump_opp = Lazy.force rocq_Ropp
-    ; dump_mul = Lazy.force rocq_Rmult
-    ; dump_pow = Lazy.force rocq_Rpower
-    ; dump_pow_arg = (fun n -> dump_nat (CamlToCoq.nat (CoqToCaml.n n)))
-    ; dump_op_prop = List.map (fun (x, y) -> (y, Lazy.force x)) rop_table_prop
-    ; dump_op_bool = List.map (fun (x, y) -> (y, Lazy.force x)) rop_table_bool
-    }
+let dump_rexpr () =
+  { interp_typ = rocq_R()
+  ; dump_cst = dump_Rcst_as_R
+  ; dump_add = rocq_Rplus()
+  ; dump_sub = rocq_Rminus()
+  ; dump_opp = rocq_Ropp()
+  ; dump_mul = rocq_Rmult()
+  ; dump_pow = rocq_Rpower()
+  ; dump_pow_arg = (fun n -> dump_nat (CamlToCoq.nat (CoqToCaml.n n)))
+  ; dump_op_prop = List.map (fun (x, y) -> (y, x())) rop_table_prop
+  ; dump_op_bool = List.map (fun (x, y) -> (y, x())) rop_table_bool
+  }
 
 let prodn n env b =
   let rec prodrec = function
@@ -1252,7 +1247,7 @@ let prodn n env b =
 
 let eKind = function
   | Mc.IsProp -> EConstr.mkProp
-  | Mc.IsBool -> Lazy.force rocq_bool
+  | Mc.IsBool -> rocq_bool()
 
 let make_goal_of_formula gl dexpr form =
   let vars_idx =
@@ -1293,7 +1288,7 @@ let make_goal_of_formula gl dexpr form =
   let mkop_prop op e1 e2 =
     try EConstr.mkApp (List.assoc op dexpr.dump_op_prop, [|e1; e2|])
     with Not_found ->
-      EConstr.mkApp (Lazy.force rocq_eq, [|dexpr.interp_typ; e1; e2|])
+      EConstr.mkApp (rocq_eq(), [|dexpr.interp_typ; e1; e2|])
   in
   let dump_cstr_prop i {Mc.flhs; Mc.fop; Mc.frhs} =
     mkop_prop fop (dump_expr i flhs) (dump_expr i frhs)
@@ -1301,55 +1296,55 @@ let make_goal_of_formula gl dexpr form =
   let mkop_bool op e1 e2 =
     try EConstr.mkApp (List.assoc op dexpr.dump_op_bool, [|e1; e2|])
     with Not_found ->
-      EConstr.mkApp (Lazy.force rocq_eq, [|dexpr.interp_typ; e1; e2|])
+      EConstr.mkApp (rocq_eq(), [|dexpr.interp_typ; e1; e2|])
   in
   let dump_cstr_bool i {Mc.flhs; Mc.fop; Mc.frhs} =
     mkop_bool fop (dump_expr i flhs) (dump_expr i frhs)
   in
   let rec xdump_prop pi xi f =
     match f with
-    | Mc.TT _ -> Lazy.force rocq_True
-    | Mc.FF _ -> Lazy.force rocq_False
+    | Mc.TT _ -> rocq_True()
+    | Mc.FF _ -> rocq_False()
     | Mc.AND (_, x, y) ->
       EConstr.mkApp
-        (Lazy.force rocq_and, [|xdump_prop pi xi x; xdump_prop pi xi y|])
+        (rocq_and(), [|xdump_prop pi xi x; xdump_prop pi xi y|])
     | Mc.OR (_, x, y) ->
       EConstr.mkApp
-        (Lazy.force rocq_or, [|xdump_prop pi xi x; xdump_prop pi xi y|])
+        (rocq_or(), [|xdump_prop pi xi x; xdump_prop pi xi y|])
     | Mc.IFF (_, x, y) ->
       EConstr.mkApp
-        (Lazy.force rocq_iff, [|xdump_prop pi xi x; xdump_prop pi xi y|])
+        (rocq_iff(), [|xdump_prop pi xi x; xdump_prop pi xi y|])
     | Mc.IMPL (_, x, _, y) ->
       EConstr.mkArrow (xdump_prop pi xi x) ERelevance.relevant
         (xdump_prop (pi + 1) (xi + 1) y)
     | Mc.NOT (_, x) ->
-      EConstr.mkArrow (xdump_prop pi xi x) ERelevance.relevant (Lazy.force rocq_False)
+      EConstr.mkArrow (xdump_prop pi xi x) ERelevance.relevant (rocq_False())
     | Mc.EQ (x, y) ->
       EConstr.mkApp
-        ( Lazy.force rocq_eq
-        , [|Lazy.force rocq_bool; xdump_bool pi xi x; xdump_bool pi xi y|] )
+        ( rocq_eq()
+        , [|rocq_bool(); xdump_bool pi xi x; xdump_bool pi xi y|] )
     | Mc.A (_, x, _) -> dump_cstr_prop xi x
     | Mc.X (_, t) ->
       let idx = Env.get_rank props t in
       EConstr.mkRel (pi + idx)
   and xdump_bool pi xi f =
     match f with
-    | Mc.TT _ -> Lazy.force rocq_true
-    | Mc.FF _ -> Lazy.force rocq_false
+    | Mc.TT _ -> rocq_true()
+    | Mc.FF _ -> rocq_false()
     | Mc.AND (_, x, y) ->
       EConstr.mkApp
-        (Lazy.force rocq_andb, [|xdump_bool pi xi x; xdump_bool pi xi y|])
+        (rocq_andb(), [|xdump_bool pi xi x; xdump_bool pi xi y|])
     | Mc.OR (_, x, y) ->
       EConstr.mkApp
-        (Lazy.force rocq_orb, [|xdump_bool pi xi x; xdump_bool pi xi y|])
+        (rocq_orb(), [|xdump_bool pi xi x; xdump_bool pi xi y|])
     | Mc.IFF (_, x, y) ->
       EConstr.mkApp
-        (Lazy.force rocq_eqb, [|xdump_bool pi xi x; xdump_bool pi xi y|])
+        (rocq_eqb(), [|xdump_bool pi xi x; xdump_bool pi xi y|])
     | Mc.IMPL (_, x, _, y) ->
       EConstr.mkApp
-        (Lazy.force rocq_implb, [|xdump_bool pi xi x; xdump_bool pi xi y|])
+        (rocq_implb(), [|xdump_bool pi xi x; xdump_bool pi xi y|])
     | Mc.NOT (_, x) ->
-      EConstr.mkApp (Lazy.force rocq_negb, [|xdump_bool pi xi x|])
+      EConstr.mkApp (rocq_negb(), [|xdump_bool pi xi x|])
     | Mc.EQ (x, y) -> assert false
     | Mc.A (_, x, _) -> dump_cstr_bool xi x
     | Mc.X (_, t) ->
@@ -1392,18 +1387,18 @@ let set sigma l concl =
   in
   xset concl l
 
-let rocq_Branch = lazy (constr_of_ref "micromega.VarMap.Branch")
-let rocq_Elt = lazy (constr_of_ref "micromega.VarMap.Elt")
-let rocq_Empty = lazy (constr_of_ref "micromega.VarMap.Empty")
-let rocq_VarMap = lazy (constr_of_ref "micromega.VarMap.type")
+let rocq_Branch () = constr_of_ref "micromega.VarMap.Branch"
+let rocq_Elt () = constr_of_ref "micromega.VarMap.Elt"
+let rocq_Empty () = constr_of_ref "micromega.VarMap.Empty"
+let rocq_VarMap () = constr_of_ref "micromega.VarMap.type"
 
 let rec dump_varmap typ m =
   match m with
-  | Mc.Empty -> EConstr.mkApp (Lazy.force rocq_Empty, [|typ|])
-  | Mc.Elt v -> EConstr.mkApp (Lazy.force rocq_Elt, [|typ; v|])
+  | Mc.Empty -> EConstr.mkApp (rocq_Empty(), [|typ|])
+  | Mc.Elt v -> EConstr.mkApp (rocq_Elt(), [|typ; v|])
   | Mc.Branch (l, o, r) ->
     EConstr.mkApp
-      (Lazy.force rocq_Branch, [|typ; dump_varmap typ l; o; dump_varmap typ r|])
+      (rocq_Branch(), [|typ; dump_varmap typ l; o; dump_varmap typ r|])
 
 let vm_of_list env =
   match env with
@@ -1414,30 +1409,30 @@ let vm_of_list env =
       Mc.Empty env
 
 let rec dump_proof_term = function
-  | Micromega.DoneProof -> Lazy.force rocq_doneProof
+  | Micromega.DoneProof -> rocq_doneProof()
   | Micromega.RatProof (cone, rst) ->
     EConstr.mkApp
-      ( Lazy.force rocq_ratProof
+      ( rocq_ratProof()
       , [|dump_psatz rocq_Z dump_z cone; dump_proof_term rst|] )
   | Micromega.CutProof (cone, prf) ->
     EConstr.mkApp
-      ( Lazy.force rocq_cutProof
+      ( rocq_cutProof()
       , [|dump_psatz rocq_Z dump_z cone; dump_proof_term prf|] )
   | Micromega.SplitProof (p, prf1, prf2) ->
     EConstr.mkApp
-      ( Lazy.force rocq_splitProof
-      , [| dump_pol (Lazy.force rocq_Z) dump_z p
+      ( rocq_splitProof()
+      , [| dump_pol (rocq_Z()) dump_z p
          ; dump_proof_term prf1
          ; dump_proof_term prf2 |] )
   | Micromega.EnumProof (c1, c2, prfs) ->
     EConstr.mkApp
-      ( Lazy.force rocq_enumProof
+      ( rocq_enumProof()
       , [| dump_psatz rocq_Z dump_z c1
          ; dump_psatz rocq_Z dump_z c2
-         ; dump_list (Lazy.force rocq_proofTerm) dump_proof_term prfs |] )
+         ; dump_list (rocq_proofTerm()) dump_proof_term prfs |] )
   | Micromega.ExProof (p, prf) ->
     EConstr.mkApp
-      (Lazy.force rocq_ExProof, [|dump_positive p; dump_proof_term prf|])
+      (rocq_ExProof(), [|dump_positive p; dump_proof_term prf|])
 
 let rec size_of_psatz = function
   | Micromega.PsatzIn _ -> 1
@@ -1501,25 +1496,23 @@ type ('synt_c, 'prf) domain_spec =
   ; dump_proof : 'prf -> EConstr.constr
   ; coeff_eq : 'synt_c -> 'synt_c -> bool }
 
-let zz_domain_spec =
-  lazy
-    { typ = Lazy.force rocq_Z
-    ; coeff = Lazy.force rocq_Z
-    ; dump_coeff = dump_z
-    ; undump_coeff = parse_z
-    ; proof_typ = Lazy.force rocq_proofTerm
-    ; dump_proof = dump_proof_term
-    ; coeff_eq = Mc.Z.eqb }
+let zz_domain_spec () =
+  { typ = rocq_Z()
+  ; coeff = rocq_Z()
+  ; dump_coeff = dump_z
+  ; undump_coeff = parse_z
+  ; proof_typ = rocq_proofTerm()
+  ; dump_proof = dump_proof_term
+  ; coeff_eq = Mc.Z.eqb }
 
-let qq_domain_spec =
-  lazy
-    { typ = Lazy.force rocq_Q
-    ; coeff = Lazy.force rocq_Q
-    ; dump_coeff = dump_q
-    ; undump_coeff = parse_q
-    ; proof_typ = Lazy.force rocq_QWitness
-    ; dump_proof = dump_psatz rocq_Q dump_q
-    ; coeff_eq = Mc.qeq_bool }
+let qq_domain_spec () =
+  { typ = rocq_Q()
+  ; coeff = rocq_Q()
+  ; dump_coeff = dump_q
+  ; undump_coeff = parse_q
+  ; proof_typ = rocq_QWitness()
+  ; dump_proof = dump_psatz rocq_Q dump_q
+  ; coeff_eq = Mc.qeq_bool }
 
 let max_tag f =
   1
@@ -1539,7 +1532,7 @@ let max_tag f =
 let micromega_order_change spec cert cert_typ env ff (*: unit Proofview.tactic*)
     =
   (* let ids = Util.List.map_i (fun i _ -> (Names.Id.of_string ("__v"^(string_of_int i)))) 0 env in *)
-  let formula_typ = EConstr.mkApp (Lazy.force rocq_Cstr, [|spec.coeff|]) in
+  let formula_typ = EConstr.mkApp (rocq_Cstr(), [|spec.coeff|]) in
   let ff = dump_formula formula_typ (dump_cstr spec.coeff spec.dump_coeff) ff in
   let vm = dump_varmap spec.typ (vm_of_list env) in
   (* todo : directly generate the proof term - or generalize before conversion? *)
@@ -1552,11 +1545,11 @@ let micromega_order_change spec cert cert_typ env ff (*: unit Proofview.tactic*)
                [ ( "__ff"
                  , ff
                  , EConstr.mkApp
-                     ( Lazy.force rocq_Formula
-                     , [|formula_typ; Lazy.force rocq_IsProp|] ) )
+                     ( rocq_Formula()
+                     , [|formula_typ; rocq_IsProp()|] ) )
                ; ( "__varmap"
                  , vm
-                 , EConstr.mkApp (Lazy.force rocq_VarMap, [|spec.typ|]) )
+                 , EConstr.mkApp (rocq_VarMap(), [|spec.typ|]) )
                ; ("__wit", cert, cert_typ) ] concl) ])
 
 (**
@@ -1703,24 +1696,24 @@ let abstract_formula : TagSet.t -> 'a formula -> 'a formula =
   let to_constr =
     Mc.
       { mkTT =
-          (let rocq_True = Lazy.force rocq_True in
-           let rocq_true = Lazy.force rocq_true in
+          (let rocq_True = rocq_True() in
+           let rocq_true = rocq_true() in
            function Mc.IsProp -> rocq_True | Mc.IsBool -> rocq_true)
       ; mkFF =
-          (let rocq_False = Lazy.force rocq_False in
-           let rocq_false = Lazy.force rocq_false in
+          (let rocq_False = rocq_False() in
+           let rocq_false = rocq_false() in
            function Mc.IsProp -> rocq_False | Mc.IsBool -> rocq_false)
       ; mkA = (fun k a (tg, t) -> t)
       ; mkAND =
-          (let rocq_and = Lazy.force rocq_and in
-           let rocq_andb = Lazy.force rocq_andb in
+          (let rocq_and = rocq_and() in
+           let rocq_andb = rocq_andb() in
            fun k x y ->
              EConstr.mkApp
                ( (match k with Mc.IsProp -> rocq_and | Mc.IsBool -> rocq_andb)
                , [|x; y|] ))
       ; mkOR =
-          (let rocq_or = Lazy.force rocq_or in
-           let rocq_orb = Lazy.force rocq_orb in
+          (let rocq_or = rocq_or() in
+           let rocq_orb = rocq_orb() in
            fun k x y ->
              EConstr.mkApp
                ( (match k with Mc.IsProp -> rocq_or | Mc.IsBool -> rocq_orb)
@@ -1729,24 +1722,24 @@ let abstract_formula : TagSet.t -> 'a formula -> 'a formula =
           (fun k x y ->
             match k with
             | Mc.IsProp -> EConstr.mkArrow x ERelevance.relevant y
-            | Mc.IsBool -> EConstr.mkApp (Lazy.force rocq_implb, [|x; y|]))
+            | Mc.IsBool -> EConstr.mkApp (rocq_implb(), [|x; y|]))
       ; mkIFF =
-          (let rocq_iff = Lazy.force rocq_iff in
-           let rocq_eqb = Lazy.force rocq_eqb in
+          (let rocq_iff = rocq_iff() in
+           let rocq_eqb = rocq_eqb() in
            fun k x y ->
              EConstr.mkApp
                ( (match k with Mc.IsProp -> rocq_iff | Mc.IsBool -> rocq_eqb)
                , [|x; y|] ))
       ; mkNOT =
-          (let rocq_not = Lazy.force rocq_not in
-           let rocq_negb = Lazy.force rocq_negb in
+          (let rocq_not = rocq_not() in
+           let rocq_negb = rocq_negb() in
            fun k x ->
              EConstr.mkApp
                ( (match k with Mc.IsProp -> rocq_not | Mc.IsBool -> rocq_negb)
                , [|x|] ))
       ; mkEQ =
-          (let rocq_eq = Lazy.force rocq_eq in
-           fun x y -> EConstr.mkApp (rocq_eq, [|Lazy.force rocq_bool; x; y|])) }
+          (let rocq_eq = rocq_eq() in
+           fun x y -> EConstr.mkApp (rocq_eq, [|rocq_bool(); x; y|])) }
   in
   Mc.abst_form to_constr (fun (t, _) -> TagSet.mem t hyps) true Mc.IsProp f
 
@@ -1919,8 +1912,8 @@ let micromega_gen parse_arith pre_process cnf spec dumpexpr prover tac =
             (EConstr.named_context genv) concl
         in
         let env = Env.elements env in
-        let spec = Lazy.force spec in
-        let dumpexpr = Lazy.force dumpexpr in
+        let spec = spec() in
+        let dumpexpr = dumpexpr() in
         if debug then
           Feedback.msg_debug (Pp.str "Env " ++ Env.pp (genv, sigma) env);
         match
@@ -1949,7 +1942,7 @@ let micromega_gen parse_arith pre_process cnf spec dumpexpr prover tac =
               ; intro_props
               ; intro_vars
               ; micromega_order_change spec res'
-                  (EConstr.mkApp (Lazy.force rocq_list, [|spec.proof_typ|]))
+                  (EConstr.mkApp (rocq_list(), [|spec.proof_typ|]))
                   env' ff_arith ]
           in
           let goal_props =
@@ -1982,9 +1975,9 @@ let micromega_wit_gen pre_process cnf spec prover wit_id ff =
   Proofview.Goal.enter (fun gl ->
       let sigma = Proofview.Goal.sigma gl in
       try
-        let spec = Lazy.force spec in
+        let spec = spec() in
         let undump_cstr = undump_cstr spec.undump_coeff in
-        let tg = Tag.from 0, Lazy.force rocq_tt in
+        let tg = Tag.from 0, rocq_tt() in
         let ff = undump_formula undump_cstr tg sigma ff in
         match
           micromega_tauto ~abstract:false pre_process cnf spec prover [] ff
@@ -1995,20 +1988,20 @@ let micromega_wit_gen pre_process cnf spec prover wit_id ff =
         | Model (m, e) ->
           Tacticals.tclFAIL (Pp.str " Cannot find witness")
         | Prf (_ids, _ff', res') ->
-          let tres' = EConstr.mkApp (Lazy.force rocq_list, [|spec.proof_typ|]) in
+          let tres' = EConstr.mkApp (rocq_list(), [|spec.proof_typ|]) in
           Tactics.letin_tac
             None (Names.Name wit_id) res' (Some tres') Locusops.nowhere
       with CsdpNotFound -> fail_csdp_not_found ())
 
 let micromega_order_changer cert env ff =
   (*let ids = Util.List.map_i (fun i _ -> (Names.Id.of_string ("__v"^(string_of_int i)))) 0 env in *)
-  let coeff = Lazy.force rocq_Rcst in
+  let coeff = rocq_Rcst() in
   let dump_coeff = dump_Rcst in
-  let typ = Lazy.force rocq_R in
+  let typ = rocq_R() in
   let cert_typ =
-    EConstr.mkApp (Lazy.force rocq_list, [|Lazy.force rocq_QWitness|])
+    EConstr.mkApp (rocq_list(), [|rocq_QWitness()|])
   in
-  let formula_typ = EConstr.mkApp (Lazy.force rocq_Cstr, [|coeff|]) in
+  let formula_typ = EConstr.mkApp (rocq_Cstr(), [|coeff|]) in
   let ff = dump_formula formula_typ (dump_cstr coeff dump_coeff) ff in
   let vm = dump_varmap typ (vm_of_list env) in
   Proofview.Goal.enter (fun gl ->
@@ -2020,22 +2013,21 @@ let micromega_order_changer cert env ff =
                [ ( "__ff"
                  , ff
                  , EConstr.mkApp
-                     ( Lazy.force rocq_Formula
-                     , [|formula_typ; Lazy.force rocq_IsProp|] ) )
-               ; ("__varmap", vm, EConstr.mkApp (Lazy.force rocq_VarMap, [|typ|]))
+                     ( rocq_Formula()
+                     , [|formula_typ; rocq_IsProp()|] ) )
+               ; ("__varmap", vm, EConstr.mkApp (rocq_VarMap(), [|typ|]))
                ; ("__wit", cert, cert_typ) ] concl)
           (*      Tacticals.tclTHENLIST (List.map (fun id ->  (Tactics.introduction id)) ids)*)
         ])
 
 let micromega_genr prover tac =
   let parse_arith = parse_rarith in
-  let spec =
-    lazy
-      { typ = Lazy.force rocq_R
-      ; coeff = Lazy.force rocq_Rcst
+  let spec () =
+      { typ = rocq_R()
+      ; coeff = rocq_Rcst()
       ; dump_coeff = dump_q
       ; undump_coeff = parse_q
-      ; proof_typ = Lazy.force rocq_QWitness
+      ; proof_typ = rocq_QWitness()
       ; dump_proof = dump_psatz rocq_Q dump_q
       ; coeff_eq = Mc.qeq_bool }
   in
@@ -2050,7 +2042,7 @@ let micromega_genr prover tac =
             (EConstr.named_context genv) concl
         in
         let env = Env.elements env in
-        let spec = Lazy.force spec in
+        let spec = spec() in
         let hyps' =
           List.map
             (fun (n, f) ->
@@ -2081,7 +2073,7 @@ let micromega_genr prover tac =
           in
           let ff' = abstract_wrt_formula ff' ff in
           let arith_goal, props, vars, ff_arith =
-            make_goal_of_formula (genv, sigma) (Lazy.force dump_rexpr) ff'
+            make_goal_of_formula (genv, sigma) (dump_rexpr()) ff'
           in
           let intro (id, _) = Tactics.introduction id in
           let intro_vars = Tacticals.tclTHENLIST (List.map intro vars) in
@@ -2194,12 +2186,18 @@ end)
   *)
 
 let require_csdp =
-  lazy (if System.is_in_system_path "csdp" then () else raise CsdpNotFound)
+  let checked = ref false in
+  fun () ->
+    if !checked then ()
+    else begin
+      let () = if System.is_in_system_path "csdp" then () else raise CsdpNotFound in
+      checked := true
+    end
 
 let really_call_csdpcert :
     provername -> micromega_polys -> Sos_types.positivstellensatz option =
  fun provername poly ->
-  Lazy.force require_csdp;
+  require_csdp();
   let cmdname = "csdpcert" in
   match (command cmdname [|cmdname|] (provername, poly) : csdp_certificate) with
   | F str ->
