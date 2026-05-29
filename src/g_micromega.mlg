@@ -24,7 +24,7 @@ open Tacarg
 
 }
 
-DECLARE PLUGIN "micromega-plugin.plugin"
+DECLARE PLUGIN "rocq-micromega-plugin.plugin"
 
 TACTIC EXTEND Lra_Q
 | [ "mp_lra_Q"  tactic(t) ] -> { Coq_micromega.mp_lra_Q (Tacinterp.tactic_of_value ist t) }
