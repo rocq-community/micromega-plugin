@@ -14,4 +14,4 @@
 (*                                                                      *)
 (************************************************************************)
 
-Declare ML Module "micromega-plugin.zify".
+Declare ML Module "rocq-micromega-plugin.zify".

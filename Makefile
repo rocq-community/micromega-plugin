@@ -5,11 +5,11 @@ dune = etc/with-rocq-wrap.sh dune $(1) $(DUNE_$(1)_FLAGS) --stop-on-first-error
 .NOTPARALLEL:
 
 build:
-	$(call dune,build) -p micromega-plugin @install
+	$(call dune,build) -p rocq-micromega-plugin @install
 .PHONY: build
 
 install:
-	$(call dune,install) micromega-plugin
+	$(call dune,install) rocq-micromega-plugin
 .PHONY: install
 
 test: build install
