@@ -1,6 +1,6 @@
 From Corelib Require Import BinNums.
-From micromega Require Import RatDef.
-From micromega Require Import formula witness tactics.
+From micromega_plugin Require Import RatDef.
+From micromega_plugin Require Import formula witness tactics.
 
 Goal True.
 Proof.
@@ -26,7 +26,7 @@ pose (ffQ :=
           (A isBool
              {| Flhs := PEadd (PEX _ xH) (PEX _ (xO xH)); Fop := OpLe; Frhs := PEc (Qmake (Zpos (xO xH)) xH) |} tt)
           (TT isBool))) : BFormula (Formula Q) isProp).
-let ff' := eval unfold ffQ in ffQ in wlra_Q wit0 ff'.
+let ff' := eval unfold ffQ in ffQ in mp_wlra_Q wit0 ff'.
 Check eq_refl : wit0 = (PsatzAdd (PsatzIn Q 2)
   (PsatzAdd (PsatzIn Q 1) (PsatzMulE (PsatzC (Qmake (Zpos (xI xH)) xH)) (PsatzIn Q 0))) :: nil)%list.
 (* indeed, ff is normalized to:
