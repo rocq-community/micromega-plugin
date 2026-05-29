@@ -97,8 +97,6 @@ with builtins; with (import <nixpkgs> {}).lib;
       #   for a complete list of Coq packages available in Nix
       # * <github_login>:<branch> is such that this will use the branch <branch>
       #   from https://github.com/<github_login>/<repository>
-      stdlib.override.version = "proux01:micromega-plugin";
-      mathcomp.override.version = "proux01:ring";
     };
     coq-common-bundles = listToAttrs (forEach coq-master (p:
       { name = p; value.override.version = "master"; }))
@@ -120,7 +118,7 @@ with builtins; with (import <nixpkgs> {}).lib;
   in {
     "rocq-master" = { rocqPackages = common-bundles // {
       rocq-core.override.version = "master";
-      # stdlib.override.version = "master";
+      stdlib.override.version = "master";
       rocq-elpi.override.version = "master";
       hierarchy-builder.override.version = "master";
     }; coqPackages = coq-common-bundles // {
@@ -147,7 +145,7 @@ with builtins; with (import <nixpkgs> {}).lib;
     }; };
     "rocq-9.0" = { rocqPackages = common-bundles // {
       rocq-core.override.version = "9.0";
-      stdlib.job = false;  # no longer comiles on 9.0
+      stdlib.job = false;  # no longer compiles on 9.0
     }; coqPackages = coq-common-bundles // {
       coq.override.version = "9.0";
       coquelicot.job = false;  # depends on stdlib

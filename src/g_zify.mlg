@@ -18,7 +18,7 @@ let locality = Zify.zify_register_locality
 
 }
 
-DECLARE PLUGIN "micromega-plugin.zify"
+DECLARE PLUGIN "rocq-micromega-plugin.zify"
 
 VERNAC COMMAND EXTEND DECLAREZIFYINJECTION CLASSIFIED AS SIDEFF
 | #[ locality ] ["Add" "Zify" "InjTyp"   reference(t) ] -> { Zify.InjTable.register locality t }
