@@ -44,4 +44,4 @@ but not
 >>
 See test-suite/micromega/witness_tactics.v for an example. *)
 
-Declare ML Module "micromega-plugin.plugin".
+Declare ML Module "rocq-micromega-plugin.plugin".

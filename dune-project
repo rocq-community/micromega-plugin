@@ -1,6 +1,6 @@
 (lang dune 3.8)
 (using coq 0.8)
-(name micromega-plugin)
+(name rocq-micromega-plugin)
 ;(generate_opam_files)
 
 (source (github rocq-community/micromega-plugin))
@@ -9,7 +9,7 @@
 (maintainers "Pierre Roux")
 
 (package
- (name micromega-plugin)
+ (name rocq-micromega-plugin)
  (synopsis "Micromega plugin for Rocq")
  (description
   "Plugin for (semi)decision procedures for arithmetic.")
