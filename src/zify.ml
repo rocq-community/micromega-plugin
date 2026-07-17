@@ -94,28 +94,62 @@ let rec find_option pred l =
   | e :: l -> ( match pred e with Some r -> r | None -> find_option pred l )
 
 module ConstrMap = struct
-
+  [%%if rocq = "9.0" || rocq = "9.1"]
+  open Names.GlobRef
+  [%%else]
   open Environ
+  [%%endif]
 
+  [%%if rocq = "9.0" || rocq = "9.1"]
+  type 'a t = 'a list Map.t
+  [%%else]
   type 'a t = 'a list QGlobRef.Map.t
+  [%%endif]
 
+  [%%if rocq = "9.0" || rocq = "9.1"]
+  let add _env gr e m =
+    Map.update gr (function None -> Some [e] | Some l -> Some (e :: l)) m
+  [%%else]
   let add env gr e m = match QGlobRef.Map.find_opt env gr m with
   | None -> QGlobRef.Map.add env gr [e] m
   | Some l -> QGlobRef.Map.add env gr (e :: l) m
+  [%%endif]
 
+  [%%if rocq = "9.0" || rocq = "9.1"]
+  let empty = Map.empty
+  [%%else]
   let empty = QGlobRef.Map.empty
+  [%%endif]
 
+  [%%if rocq = "9.0" || rocq = "9.1"]
+  let find _env evd h m =
+    match Map.find (fst (EConstr.destRef evd h)) m with
+    | e :: _ -> e
+    | [] -> assert false
+  [%%else]
   let find env evd h m =
     match QGlobRef.Map.find env (fst (EConstr.destRef evd h)) m with
     | e :: _ -> e
     | [] -> assert false
+  [%%endif]
 
+  [%%if rocq = "9.0" || rocq = "9.1"]
+  let find_all _env evd h m = Map.find (fst (EConstr.destRef evd h)) m
+  [%%else]
   let find_all env evd h m = QGlobRef.Map.find env (fst (EConstr.destRef evd h)) m
+  [%%endif]
 
+  [%%if rocq = "9.0" || rocq = "9.1"]
+  let fold f m acc =
+    Map.fold
+      (fun k l acc -> List.fold_left (fun acc e -> f k e acc) acc l)
+      m acc
+  [%%else]
   let fold f m acc =
     QGlobRef.Map.fold
       (fun k l acc -> List.fold_left (fun acc e -> f k e acc) acc l)
       m acc
+  [%%endif]
 end
 
 [%%if rocq = "9.0" || rocq = "9.1" || rocq = "9.2"]
