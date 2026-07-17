@@ -98,7 +98,7 @@ with builtins; with (import <nixpkgs> {}).lib;
       # * <github_login>:<branch> is such that this will use the branch <branch>
       #   from https://github.com/<github_login>/<repository>
     };
-    coq-common-bundles = listToAttrs (forEach coq-master (p:
+    coq-common-bundles = listToAttrs (forEach (master ++ coq-master) (p:
       { name = p; value.override.version = "master"; }))
     // {
       CertiRocq.job = false;
@@ -124,7 +124,6 @@ with builtins; with (import <nixpkgs> {}).lib;
     }; coqPackages = coq-common-bundles // {
       coq.override.version = "master";
       coq-elpi.override.version = "master";
-      coq-elpi.override.elpi-version = "3.6.2";
       hierarchy-builder.override.version = "master";
       coquelicot.job = false;
       interval.job = false;
