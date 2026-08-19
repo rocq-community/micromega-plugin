@@ -411,6 +411,16 @@ let target_inj d =
 
 type term_kind = Application of EConstr.constr | OtherTerm of EConstr.constr
 
+[%%if rocq = "9.0" || rocq = "9.1" || rocq = "9.2" || rocq = "9.3"]
+module SummaryRef = struct
+  type 'a t = 'a ref
+  let (!) = Stdlib.get
+  let (:=) = Stdlib.set
+end
+[%%else]
+module SummaryRef = Summary.Ref
+[%%endif]
+
 module type Elt = sig
   type elt
 
@@ -418,7 +428,7 @@ module type Elt = sig
   val name : string
 
   val gref : unit -> GlobRef.t
-  val table : (term_kind * decl_kind) ConstrMap.t ref
+  val table : (term_kind * decl_kind) ConstrMap.t SummaryRef.t
   val cast : elt decl -> decl_kind
   val dest : decl_kind -> elt decl option
 
@@ -687,6 +697,7 @@ module MakeTable (E : Elt) : S = struct
                                           gl_pr_constr c ++ str " should be a global reference")
 
   let register_hint env evd t elt =
+    let open SummaryRef in
     match EConstr.kind evd t with
     | App (c, _) ->
        let gr = safe_ref evd c in
@@ -742,6 +753,7 @@ module MakeTable (E : Elt) : S = struct
         (CErrors.user_err Pp.(Libnames.pr_qualid c ++ str " does not exist."))
 
   let pp_keys () =
+    let open SummaryRef in
     let env = Global.env () in
     let evd = Evd.from_env env in
     ConstrMap.fold
@@ -810,9 +822,9 @@ module UnOpSpec = MakeTable (EUnopSpec)
 module BinOpSpec = MakeTable (EBinOpSpec)
 
 let init_cache () =
-  table_cache := !table;
-  saturate_cache := !saturate;
-  specs_cache := !specs
+  table_cache := SummaryRef.(!table);
+  saturate_cache := SummaryRef.(!saturate);
+  specs_cache := SummaryRef.(!specs)
 
 open EInjT
 
