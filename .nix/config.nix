@@ -21,7 +21,7 @@ with builtins; with (import <nixpkgs> {}).lib;
 
   ## select an entry to build in the following `bundles` set
   ## defaults to "default"
-  default-bundle = "rocq-9.1";
+  default-bundle = "rocq-9.2";
 
   ## write one `bundles.name` attribute set per
   ## alternative configuration
@@ -78,16 +78,37 @@ with builtins; with (import <nixpkgs> {}).lib;
     master = [
       "stdlib"
       "mathcomp"
-    ];
-    coq-master = [
       "coquelicot"
       "interval"
     ];
     common-bundles = listToAttrs (forEach master (p:
       { name = p; value.override.version = "master"; }))
     // {
+      CertiRocq.job = false;
+      CoLoR.job = false;
+      ConCert.job = false;
+      coqeal.job = false;
+      fourcolor.job = false;
+      gaia.job = false;
       mathcomp.job = false;
       mathcomp-algebra.job = true;
+      mathcomp-analysis.job = false;
+      mathcomp-analysis-stdlib.job = false;
+      mathcomp-character.job = false;
+      mathcomp-classical.job = false;
+      mathcomp-experimental-reals.job = false;
+      mathcomp-infotheo.job = false;
+      mathcomp-reals.job = false;
+      mathcomp-reals-stdlib.job = false;
+      mathcomp-real-closed.job = false;
+      mathcomp-solvable.job = false;
+      mathcomp-field.job = false;
+      multinomials.job = false;
+      libvalidsdp.job = false;
+      odd-order.job = false;
+      parseque.job = false;
+      validsdp.job = false;
+      wasmcert.job = false;
       # To add an overlay applying to all bundles,
       # add below a line like
       #<package>.override.version = "<github_login>:<branch>";
@@ -98,58 +119,44 @@ with builtins; with (import <nixpkgs> {}).lib;
       # * <github_login>:<branch> is such that this will use the branch <branch>
       #   from https://github.com/<github_login>/<repository>
     };
-    coq-common-bundles = listToAttrs (forEach (master ++ coq-master) (p:
-      { name = p; value.override.version = "master"; }))
-    // {
-      CertiRocq.job = false;
-      CoLoR.job = false;
-      ConCert.job = false;
-      coqeal.job = false;
-      mathcomp.job = false;
-      mathcomp-character.job = false;
-      mathcomp-infotheo.job = false;
-      mathcomp-solvable.job = false;
-      mathcomp-field.job = false;
-      libvalidsdp.job = false;
-      parseque.job = false;
-      validsdp.job = false;
-      wasmcert.job = false;
-    };
   in {
-    "rocq-master" = { rocqPackages = common-bundles // {
+    "rocq-master".rocqPackages = common-bundles // {
       rocq-core.override.version = "master";
+      coq.override.version = "master";
       stdlib.override.version = "master";
       rocq-elpi.override.version = "master";
       hierarchy-builder.override.version = "master";
-    }; coqPackages = coq-common-bundles // {
-      coq.override.version = "master";
-      coq-elpi.override.version = "master";
-      hierarchy-builder.override.version = "master";
       coquelicot.job = false;
       interval.job = false;
-    }; };
-    "rocq-9.2" = { rocqPackages = common-bundles // {
-      rocq-core.override.version = "9.2";
+    };
+    "rocq-9.3".rocqPackages = common-bundles // {
+      rocq-core.override.version = "9.3";
+      coq.override.version = "9.3";
       hierarchy-builder.override.version = "master";
-    }; coqPackages = coq-common-bundles // {
+      coquelicot.job = false;  # not yet available for 9.3
+      interval.job = false;  # not yet available for 9.3
+    };
+    "rocq-9.2".rocqPackages = common-bundles // {
+      rocq-core.override.version = "9.2";
       coq.override.version = "9.2";
       hierarchy-builder.override.version = "master";
       coquelicot.job = false;  # not yet available for 9.2
       interval.job = false;  # not yet available for 9.2
-    }; };
-    "rocq-9.1" = { rocqPackages = common-bundles // {
+    };
+    "rocq-9.1".rocqPackages = common-bundles // {
       rocq-core.override.version = "9.1";
-    }; coqPackages = coq-common-bundles // {
       coq.override.version = "9.1";
-    }; };
-    "rocq-9.0" = { rocqPackages = common-bundles // {
-      rocq-core.override.version = "9.0";
-      stdlib.job = false;  # no longer compiles on 9.0
-    }; coqPackages = coq-common-bundles // {
-      coq.override.version = "9.0";
+      stdlib.job = false;  # no longer compiles on 9.1
       coquelicot.job = false;  # depends on stdlib
       interval.job = false;  # depends on stdlib
-    }; };
+    };
+    "rocq-9.0".rocqPackages = common-bundles // {
+      rocq-core.override.version = "9.0";
+      coq.override.version = "9.0";
+      stdlib.job = false;  # no longer compiles on 9.0
+      coquelicot.job = false;  # depends on stdlib
+      interval.job = false;  # depends on stdlib
+    };
   };
 
   ## Cachix caches to use in CI
