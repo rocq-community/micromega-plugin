@@ -414,8 +414,8 @@ type term_kind = Application of EConstr.constr | OtherTerm of EConstr.constr
 [%%if rocq = "9.0" || rocq = "9.1" || rocq = "9.2" || rocq = "9.3"]
 module SummaryRef = struct
   type 'a t = 'a ref
-  let (!) = Stdlib.get
-  let (:=) = Stdlib.set
+  let (!) x = !x
+  let (:=) x y = x := y
 end
 [%%else]
 module SummaryRef = Summary.Ref
