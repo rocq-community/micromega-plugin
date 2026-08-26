@@ -1,3 +1,4 @@
+# Remove etc/with-rocq-wrap.sh when requiring Rocq >= 9.2
 dune = etc/with-rocq-wrap.sh dune $(1) $(DUNE_$(1)_FLAGS) --stop-on-first-error
 
 # This makefile is mostly calling dune and dune doesn't like
