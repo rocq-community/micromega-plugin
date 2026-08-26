@@ -1,4 +1,4 @@
-(coq.theory
+(rocq.theory
  (name micromega_plugin)
  (package rocq-micromega-plugin)
  (plugins rocq-micromega-plugin.plugin rocq-micromega-plugin.zify))
