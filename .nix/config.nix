@@ -84,12 +84,22 @@ with builtins; with (import <nixpkgs> {}).lib;
     common-bundles = listToAttrs (forEach master (p:
       { name = p; value.override.version = "master"; }))
     // {
+      aac-tactics.job = false;
+      ceres.job = false;
       CertiRocq.job = false;
+      Cheerios.job = false;
       CoLoR.job = false;
       ConCert.job = false;
       coqeal.job = false;
+      coq-hammer.job = false;
+      coq-hammer-tactics.job = false;
+      coqutil.job = false;
+      equations.job = false;
+      ExtLib.job = false;
       fourcolor.job = false;
       gaia.job = false;
+      InfSeqExt.job = false;
+      iris.job = false;
       mathcomp.job = false;
       mathcomp-algebra.job = true;
       mathcomp-analysis.job = false;
@@ -103,10 +113,16 @@ with builtins; with (import <nixpkgs> {}).lib;
       mathcomp-real-closed.job = false;
       mathcomp-solvable.job = false;
       mathcomp-field.job = false;
+      MenhirLib.job = false;
       multinomials.job = false;
       libvalidsdp.job = false;
       odd-order.job = false;
+      Ordinal.job = false;
+      paco.job = false;
       parseque.job = false;
+      rewriter.job = false;
+      stdpp.job = false;
+      StructTact.job = false;
       validsdp.job = false;
       wasmcert.job = false;
       # To add an overlay applying to all bundles,
@@ -118,6 +134,7 @@ with builtins; with (import <nixpkgs> {}).lib;
       #   for a complete list of Coq packages available in Nix
       # * <github_login>:<branch> is such that this will use the branch <branch>
       #   from https://github.com/<github_login>/<repository>
+      stdlib.override.version = "proux01:tify";
     };
   in {
     "rocq-master".rocqPackages = common-bundles // {

@@ -1,19 +1,19 @@
 (library
  (name micromega_ml_plugin)
- (modules (:standard \ csdpcert g_zify zify))
- (public_name rocq-micromega-plugin.plugin)
+ (modules (:standard \ csdpcert g_tify tify))
+ (public_name rocq-micromega-plugin.plugin) 
  (flags :standard -w -27)
  (preprocess
   (pps ppx_optcomp -- -cookie "ppx_optcomp.env=env ~rocq:(Defined \"%{coq:version.major}.%{coq:version.minor}\")"))
  (libraries rocq-runtime.plugins.ltac rocq-runtime.vernac))
 
 (library
- (name zify_ml_plugin)
- (public_name rocq-micromega-plugin.zify)
- (modules g_zify zify)
+ (name tify_ml_plugin)
+ (public_name rocq-micromega-plugin.tify)
+ (modules g_tify tify)
  (preprocess
   (pps ppx_optcomp -- -cookie "ppx_optcomp.env=env ~rocq:(Defined \"%{coq:version.major}.%{coq:version.minor}\")"))
  (libraries rocq-runtime.plugins.ltac))
 
 (rocq.pp
- (modules g_micromega g_zify))
+ (modules g_micromega g_tify))
