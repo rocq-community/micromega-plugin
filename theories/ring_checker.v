@@ -20,6 +20,7 @@ tactic, one needs in addition an input term reifier, a proof of correctness
 of the computational part and a tactic gluing everything together. *)
 
 (** Definition of polynomial expressions *)
+#[universes(template)]
 Inductive PExpr {C} : Type :=
 | PEO : PExpr
 | PEI : PExpr
@@ -52,6 +53,7 @@ In addition:
   since they can be represented by the simpler form (PX P (i+j) Q)
 - (Pinj i (Pinj j P)) is (Pinj (i+j) P)
 - (Pinj i (Pc c)) is (Pc c) *)
+#[universes(template)]
 Inductive Pol {C} : Type :=
 | Pc : C -> Pol
 | Pinj : positive -> Pol -> Pol
