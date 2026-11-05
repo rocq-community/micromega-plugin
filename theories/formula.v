@@ -57,7 +57,7 @@ Register Formula as micromega_plugin.Formula.type.
 Register Build_Formula as micromega_plugin.Formula.Build_Formula.
 
 (** Formulae are either interpreted over Prop or bool. *)
-Variant kind : Set := isProp | isBool.
+Variant kind : Type := isProp | isBool.
 
 Register isProp as micromega_plugin.kind.isProp.
 Register isBool as micromega_plugin.kind.isBool.

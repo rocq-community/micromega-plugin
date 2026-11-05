@@ -53,7 +53,8 @@ In addition:
   since they can be represented by the simpler form (PX P (i+j) Q)
 - (Pinj i (Pinj j P)) is (Pinj (i+j) P)
 - (Pinj i (Pc c)) is (Pc c) *)
-#[universes(template)] Inductive Pol {C} : Type :=
+#[universes(template)]
+Inductive Pol {C} : Type :=
 | Pc : C -> Pol
 | Pinj : positive -> Pol -> Pol
 | PX : Pol -> positive -> Pol -> Pol.
