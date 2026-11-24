@@ -4,7 +4,7 @@
  (public_name rocq-micromega-plugin.plugin)
  (flags :standard -w -27)
  (preprocess
-  (pps ppx_optcomp -- -cookie "ppx_optcomp.env=env ~rocq:(Defined \"%{coq:version.major}.%{coq:version.minor}\")"))
+  (pps ppx_optcomp -- -cookie "ppx_optcomp.env=env ~rocq:(Defined \"%{rocq:version.major}.%{rocq:version.minor}\")"))
  (libraries rocq-runtime.plugins.ltac rocq-runtime.vernac))
 
 (library
@@ -12,7 +12,7 @@
  (public_name rocq-micromega-plugin.zify)
  (modules g_zify zify)
  (preprocess
-  (pps ppx_optcomp -- -cookie "ppx_optcomp.env=env ~rocq:(Defined \"%{coq:version.major}.%{coq:version.minor}\")"))
+  (pps ppx_optcomp -- -cookie "ppx_optcomp.env=env ~rocq:(Defined \"%{rocq:version.major}.%{rocq:version.minor}\")"))
  (libraries rocq-runtime.plugins.ltac))
 
 (rocq.pp
