@@ -14,7 +14,7 @@ bug-reports: "https://github.com/rocq-community/micromega-plugin/issues"
 depends: [
   "dune" {>= "3.21"}
   "ocaml" {>= "4.09.0"}
-  "rocq-core" {(>= "9.0" & < "9.3~") | = "dev"}
+  "rocq-core" {(>= "9.0" & < "9.4~") | = "dev"}
   "ppx_optcomp"
 ]
 dev-repo: "git+https://github.com/rocq-community/micromega-plugin.git"
